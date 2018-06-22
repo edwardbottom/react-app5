@@ -52,7 +52,7 @@
       "placeholder":"Search WSS"
     }
   },
-  "content": [
+  "voiceanddataservices": [
     {
       "type": "headerAndDescription",
       "header": "Voice and Data Services",
@@ -314,5 +314,25 @@
   },
   "pancakes": {
     "pancakes": ""
-  }
+  },
+  "budgetrequests": [
+    {
+      "type": "headerAndDescription",
+      "header": "Budget Requests",
+      "description": "This will contain the Budget Requests"
+    },
+    {
+      "type": "createPanels",
+      "list": [
+        {
+          "route": "/dynamic",
+          "header": "Revision to Furniture, Equipment, and Vehicle Budget Requests"
+        },
+        {
+          "route": "/dynamic",
+          "header": "Vehicle Change/Transfer Request"
+        }
+      ]
+    }
+  ]
 }

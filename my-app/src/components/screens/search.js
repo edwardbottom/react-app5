@@ -92,10 +92,21 @@ list.push(two);
 
 //renders the screen for my tasks
 export default class SearchScreen extends React.Component {
+  //constructor and state intialization
+  constructor(props) {
+    super(props);
+    this.state = {nav:this.props.navData
+    };
+  };
+
+  //state life cycle
+  componentDidMount() {
+  }
+
   render() {
     return (
       <div>
-          {createNavBar(navBarObj)}
+          {createNavBar(this.state.nav)}
           <div className="container">
             <div id="Search_Screen">
               <div className="container">

@@ -18,7 +18,7 @@ export function createNavBar(props){
           <div className="container-fluid">
             <div className="navbar-header">
               <a className="navbar-left" href={props.titlePath}><img src="CTL Logo Reverse NA.png" 
-              width="200" height="50" alt="CenturyLink Logo"></img></a>
+              width="150" height="35" alt="CenturyLink Logo"></img></a>
             </div>
           {/*navigation bar links*/}
           <ul className="nav navbar-nav">
