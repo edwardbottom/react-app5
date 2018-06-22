@@ -1,0 +1,16 @@
+{
+  "dropDownButton": {
+    "id": "idOfButton",
+    "description": "textOnButton",
+    "list": [
+      {
+        "path": "link/pathOfButton",
+        "description": "textOnButton"
+      },
+      {
+        "path": "link/pathOfButton",
+        "description": "textOnButton"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "linksPanel": {
+    "route": "route",
+    "header": "panelHeader",
+    "linkList": [
+      {
+        "url": "urlOfLink",
+        "text": "textForLink"
+      },
+      {
+        "url": "urlOfLink",
+        "text": "textForLink"
+      }
+    ]
+  }
+}

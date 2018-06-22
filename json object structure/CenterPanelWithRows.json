@@ -1,0 +1,16 @@
+{
+  "CenterPanelWithRows": {
+    "route": "linkForHeader",
+    "header": "modalHeader",
+    "body": [
+      {
+        "task": "text",
+        "description": "text"
+      },
+      {
+        "task": "text",
+        "description": "text"
+      }
+    ]
+  }
+}

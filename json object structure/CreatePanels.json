@@ -1,0 +1,17 @@
+{
+  "CreatePanels": {
+    "list": [
+      {
+        "route": "link",
+        "target": "#modalID",
+        "body": "textInBody",
+        "header": "textInHeader"
+      },
+      {
+        "route": "link",
+        "header": "textInHeader",
+        "body": "textInBody"
+      }
+    ]
+  }
+}

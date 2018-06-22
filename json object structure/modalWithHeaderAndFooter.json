@@ -1,0 +1,19 @@
+{
+  "modalWithHeaderAndFooter": {
+    "id": "modalID",
+    "header": "modalHeader",
+    "inputArray": [
+      {
+        "type":"input",
+        "id":"text",
+        "placeholder":"text"
+      },
+      {
+        "type": "input",
+        "id":"text",
+        "class":"text",
+        "value":"buttonLable"
+      }
+    ]
+  }
+}

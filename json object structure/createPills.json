@@ -1,0 +1,14 @@
+{
+  "createPills": {
+    "list": [
+      {
+        "link": "link/route for pill",
+        "title": "text on pill"
+      },
+      {
+        "link": "link/route for pill",
+        "title": "text for pill"
+      }
+    ]
+  }
+}

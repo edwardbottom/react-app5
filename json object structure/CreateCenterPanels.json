@@ -1,0 +1,16 @@
+{
+  "CreatePanelsCenter": {
+    "list": [
+      {
+        "route": "link",
+        "body": "textInBody",
+        "header": "textInHeader"
+      },
+      {
+        "route": "link",
+        "header": "textInHeader",
+        "body": "textInBody"
+      }
+    ]
+  }
+}

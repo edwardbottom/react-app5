@@ -1,0 +1,318 @@
+{
+  "navBarObj": {
+    "titlePath": "/home",
+    "list": [
+      {
+        "id": "my_tasks_listener",
+        "path": "/home",
+        "action": "loadMyTasks()",
+        "description": "My Tasks"
+      },
+      {
+        "id": "access_request_listener",
+        "path": "/accessrequest",
+        "description": "Access Request"
+      },
+      {
+        "id": "budget_request_listener",
+        "path": "/budgetrequests",
+        "description": "Budget Request"
+      },
+      {
+        "id": "contractor_management_listener",
+        "path": "/contractormanagement",
+        "description": "Contractor Management"
+      },
+      {
+        "id": "real_estate_listener",
+        "path": "/realestate",
+        "description": "Real Estate"
+      },
+      {
+        "id": "user_tools_listener",
+        "path": "/usertools",
+        "description": "User Tools"
+      },
+      {
+        "id": "voice_and_data_services_listener",
+        "path": "/voiceanddataservices",
+        "description": "Voice and Data Services"
+      },
+      {
+        "id": "dynamic_screen",
+        "path": "/dynamic",
+        "description": "Dynamic"
+      },
+      {
+        "router": "phpIsTheWorst",
+        "placeholder": "Search WSS System"
+      }
+    ],
+    "searchbar":{
+      "placeholder":"Search WSS"
+    }
+  },
+  "content": [
+    {
+      "type": "headerAndDescription",
+      "header": "Voice and Data Services",
+      "description": "Tools to manage and provision phone, network and other voices services."
+    },
+    {
+      "type": "linksPanel",
+      "route": "https://www.youtube.com/watch?v=OQ5rI461KNE&list=RDGMEMHDXYb1_DDSgDsobPsOFxpAVMXVQOhIVcMj0&index=2",
+      "header": "Important Links",
+      "linkList": [
+        {
+          "url": "https://www.youtube.com/watch?v=YQ5KH0xVS5M&index=3&list=RDGMEMHDXYb1_DDSgDsobPsOFxpAVMXVQOhIVcMj0",
+          "text": "Important Link"
+        }
+      ]
+    },
+    {
+      "type": "headerAndDescription",
+      "header": "User Tools",
+      "description": "null"
+    },
+    {
+      "type": "header",
+      "header": "Work Flow"
+    },
+    {
+      "type": "createPanels",
+      "list": [
+        {
+          "route": "/dynamic",
+          "header": "Change User Password"
+        },
+        {
+          "route": "/dynamic",
+          "header": "Linux Access"
+        },
+        {
+          "route": "/dynamic",
+          "header": "Edward is amazing"
+        }
+      ]
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "CreatePanels": [
+    {
+      "route": "link",
+      "header": "Change User Password",
+      "body": "This will change the users password"
+    },
+    {
+      "route": "link",
+      "header": "Edward is Awesome",
+      "body": "He made this UI"
+    }
+  ],
+  "header": {
+    "headerObj": {
+      "header": "This Page was Created From a Proxy Server"
+    }
+  },
+  "modalButton": {
+    "target": "#modalID",
+    "text": "Add to Work Flow"
+  },
+  "modal": {
+    "id": "modalID",
+    "header": "Add To Work Flow",
+    "inputArray": [
+      {
+        "type": "input",
+        "id": "username",
+        "placeholder": "username"
+      },
+      {
+        "type": "input",
+        "id": "oldPassword",
+        "placeholder": "Old Password"
+      },
+      {
+        "type": "input",
+        "id": "newPassword",
+        "placeholder": "New Password"
+      },
+      {
+        "type": "input",
+        "id": "reNewPassword",
+        "placeholder": "ReEnter New Password"
+      }
+    ]
+  },
+  "headerAndDescription": {
+    "header": "This is a Header",
+    "description": "This is a Description"
+  },
+  "panel": {
+    "route": "link",
+    "header": "Center Panel",
+    "body": "This is a single panel created from a REST API. "
+  },
+  "table": {
+    "header": [
+      {
+        "text": "Task"
+      },
+      {
+        "text": "Description"
+      }
+    ],
+    "body": [
+      {
+        "task": "task",
+        "description": "description"
+      },
+      {
+        "task": "task",
+        "description": "description"
+      },
+      {
+        "task": "task",
+        "description": "description"
+      }
+    ]
+  },
+  "linksPanel": {
+    "route": "route",
+    "header": "panelHeader",
+    "linkList": [
+      {
+        "url": "https://www.youtube.com/watch?v=dMK_npDG12Q&list=RDGMEM6ijAnFTG9nX1G-kbWBUCJAVMYsLerRmuefo&index=10",
+        "text": "this is a link"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=dMK_npDG12Q&list=RDGMEM6ijAnFTG9nX1G-kbWBUCJAVMYsLerRmuefo&index=10",
+        "text": "this is a link"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=dMK_npDG12Q&list=RDGMEM6ijAnFTG9nX1G-kbWBUCJAVMYsLerRmuefo&index=10",
+        "text": "this is a link"
+      }
+    ]
+  },
+  "CenterPanelWithRows": {
+    "route": "linkForHeader",
+    "header": "modalHeader",
+    "body": [
+      {
+        "task": "task",
+        "description": "description"
+      },
+      {
+        "task": "task",
+        "description": "description"
+      }
+    ]
+  },
+  "collapsePanel": {
+    "route": "linkForHeader",
+    "header": "modalHeader",
+    "target": "#collapseID",
+    "description": "textForModalBody",
+    "id": "collapseID",
+    "inputArray": [
+      {
+        "type": "input",
+        "id": "idOfObj1",
+        "placeHolder": "Username"
+      },
+      {
+        "type": "input",
+        "id": "idOfObj2",
+        "placeHolder": "Password"
+      }
+    ]
+  },
+  "navBarObj": {
+    "titlePath": "/home",
+    "list": [
+      {
+        "id": "my_tasks_listener",
+        "path": "/home",
+        "action": "loadMyTasks()",
+        "description": "My Tasks"
+      },
+      {
+        "id": "access_request_listener",
+        "path": "/accessrequest",
+        "description": "Access Request"
+      },
+      {
+        "id": "budget_request_listener",
+        "path": "/budgetrequests",
+        "description": "Budget Request"
+      },
+      {
+        "id": "contractor_management_listener",
+        "path": "/contractormanagement",
+        "description": "Contractor Management"
+      },
+      {
+        "id": "real_estate_listener",
+        "path": "/realestate",
+        "description": "Real Estate"
+      },
+      {
+        "id": "user_tools_listener",
+        "path": "/usertools",
+        "description": "User Tools"
+      },
+      {
+        "id": "voice_and_data_services_listener",
+        "path": "/voiceanddataservices",
+        "description": "Voice and Data Services"
+      },
+      {
+        "id": "logout_screen",
+        "path": "/",
+        "description": "Logout"
+      },
+      {
+        "router": "phpIsTheWorst",
+        "placeholder": "Search WSS System"
+      }
+    ],
+    "searchbar": {
+      "placeholder": "Search WSS"
+    }
+  },
+  "pancakes": {
+    "pancakes": ""
+  }
+}

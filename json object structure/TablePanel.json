@@ -1,0 +1,17 @@
+{
+  "CenterPanelWithTable": {
+    "route": "linkForHeader",
+    "header": "modalHeader",
+    "target": "#collapseID",
+    "tableContents": [
+      {
+        "task": "text",
+        "description": "text"
+      },
+      {
+        "task": "text",
+        "description": "text"
+      }
+    ]
+  }
+}
