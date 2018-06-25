@@ -24,6 +24,7 @@ export function table(props){
         {/*table headers*/}
         <thead>
           <tr>
+              <p></p>
               {props.header.map((headerObj, index) =>
                 header(headerObj)
               )}
@@ -32,8 +33,9 @@ export function table(props){
         <tbody>
           {/*iteams in table */}
           {props.body.map((rowObj, index) =>
-            <tr>
-              <td> {rowObj.task} <span class="glyphicon glyphicon-ok-sign"
+            <tr id={rowObj.link + "row"}>
+              <td><input type="checkbox" id={rowObj.link + "check"}></input></td>
+              <td> {rowObj.task} <span className="glyphicon glyphicon-ok-sign"
                data-toggle="modal" data-target={rowObj.modalLink}></span></td>
               <td> {rowObj.description} </td>
               {infoModal(rowObj.modal)}

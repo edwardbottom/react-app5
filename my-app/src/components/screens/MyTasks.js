@@ -7,6 +7,10 @@ import {button, dropDownButton, buttonWithLink} from './objects/buttons';
 import {rightSearchBar} from './objects/SearchBar';
 import {table} from './objects/table';
 import {createNavBar} from './objects/navbar';
+import SelectTable from './objects/selectTable';
+import {modalButton, infoModal} from './objects/forms';
+
+
 //random data
 
 let otherSearchBar = new Object();
@@ -69,11 +73,17 @@ tableObj.body.push(rowObj);
 
 
 
-
 let historyButton = new Object();
 historyButton.target = "/history";
 historyButton.text = "History";
 
+let modalB = new Object();
+modalB.target = "#modalBLink";
+modalB.text = "Submit";
+
+let infoB = new Object();
+infoB.id = "modalBLink";
+infoB.description = "Do you want to submit the selected tasks?";
 var data = data = [{one: 'fish'}, {two: 'fish'}, {red: 'fish'}, {blue: 'fish'}];
 //renders the screen for my tasks
 export default class MyTasksScreen extends React.Component {
@@ -114,7 +124,9 @@ export default class MyTasksScreen extends React.Component {
                   </div>
                   <div className="col-md-4"> 
                     {dropDownButton(myRequestsButton)}
-                    {table(tableObj)}
+                    <SelectTable/>
+                    {modalButton(modalB)}
+                    {infoModal(infoB)}
                   </div>
                 </div>
               </div>
