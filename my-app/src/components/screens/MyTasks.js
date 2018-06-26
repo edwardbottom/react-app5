@@ -125,7 +125,9 @@ export default class MyTasksScreen extends React.Component {
                   <div className="col-md-4"> 
                     {dropDownButton(myRequestsButton)}
                     <SelectTable/>
-                    {modalButton(modalB)}
+                    <center>
+                      {modalButton(modalB)}
+                    </center>
                     {infoModal(infoB)}
                   </div>
                 </div>

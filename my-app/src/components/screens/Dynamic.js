@@ -59,6 +59,10 @@ function createScreen(props){
   }     
 }
 
+function foo(props){
+  alert("the handler was reached");
+}
+
 export default class DynamicBodyScreen extends React.Component {
   //constructor and state intialization
   constructor(props) {
@@ -72,7 +76,7 @@ export default class DynamicBodyScreen extends React.Component {
   componentDidMount() {
   }
   //renders the html
-  render() {
+  /*render() {
     return (
       <div>
         {createNavBar(this.state.nav)}
@@ -81,6 +85,27 @@ export default class DynamicBodyScreen extends React.Component {
           </div>}
       </div>
     );
+  }*/
+
+  onItemClick(event) {
+    var serialize = require('form-serialize');
+    var form = document.querySelector('#example-form');
+    var obj = serialize(form, { hash: true });
+    alert(obj.something);
+    axios.get("http://localhost:3004/budgetrequests")
+      .then(res => {
+        const budgetrequests = res.data;
+        alert(budgetrequests);
+      })
+  }
+
+  render(){
+    return(
+      <form id="example-form">
+        <input type="text" name="something"/>
+        <a href="/home" role="button" onClick={this.onItemClick} className="btn btn-success">Login</a>
+      </form>
+      )
   }
 }
 

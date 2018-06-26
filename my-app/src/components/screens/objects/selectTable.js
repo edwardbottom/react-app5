@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import 'react-bootstrap-table/css/react-bootstrap-table.css'
 
-
+//data structure to store data
 const products = [];
 
+//function to add iteams to the data structure
+//todo: add in api calls
 function addProducts(quantity) {
   const startId = products.length;
   for (let i = 0; i < quantity; i++) {
@@ -19,11 +21,13 @@ function addProducts(quantity) {
 
 addProducts(3);
 
+//table color setup
 const selectRowProp = {
   mode: 'checkbox',
-  bgColor: 'pink'
+  bgColor: '#bbff99'
 };
 
+//class for a table with selection options
 export default class SelectBgColorTable extends React.Component {
   render() {
     return (
