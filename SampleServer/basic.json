@@ -1,12 +1,12 @@
 {
   "navBarObj": {
-    "titlePath": "/home",
+    "titlePath": "/budgetrequests",
     "list": [
       {
         "id": "my_tasks_listener",
         "path": "/home",
         "action": "loadMyTasks()",
-        "description": "My Tasks"
+        "description": "Home"
       },
       {
         "id": "access_request_listener",

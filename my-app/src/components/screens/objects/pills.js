@@ -1,5 +1,3 @@
-//todo: create json files for sample pills objects
-
 //imports react 
 import React, { Component } from 'react';
 

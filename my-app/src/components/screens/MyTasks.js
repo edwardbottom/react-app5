@@ -84,7 +84,7 @@ modalB.text = "Submit";
 let infoB = new Object();
 infoB.id = "modalBLink";
 infoB.description = "Do you want to submit the selected tasks?";
-var data = data = [{one: 'fish'}, {two: 'fish'}, {red: 'fish'}, {blue: 'fish'}];
+
 //renders the screen for my tasks
 export default class MyTasksScreen extends React.Component {
   //constructor and state intialization

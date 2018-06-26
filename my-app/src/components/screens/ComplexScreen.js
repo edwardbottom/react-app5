@@ -149,9 +149,11 @@ mObject.inputArray = iArray;
 objArray.push(mObject);
 
 var check = new Object();
-check.type = "check";
-check.label = "Confirm Changes";
+check.type = "button";
+check.class = "btn btn-success";
 check.align = "center";
+check.id = "stageChangesButton";
+check.text= "Stage Changes";
 objArray.push(check);
 
 var sButton = new Object();
@@ -256,6 +258,7 @@ function createComplexForm(props){
         			else if(inputObj.type == "button"){
         				return(
         					<div>
+                    <br/>
         						{button(inputObj)}
         					</div>
         				)
