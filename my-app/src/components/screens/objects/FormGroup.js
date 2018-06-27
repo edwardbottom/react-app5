@@ -13,6 +13,7 @@ function FieldGroup({ id, label, help, ...props }) {
 }
 
 //helper function that creates a single textbox
+//todo: add in a name property for this so it can be synthesized into a json object
 export function textGroup(props){
 	return(
 		  <FormGroup inline controlId={props.id}>
@@ -126,8 +127,18 @@ export function checkBox(props){
 	)
 }
 
+//todo: update json objects for handlers and callback
 //creates a button aligned to the right side of the screen
 export function button(props){
+  // if(props.hasOwnProperty("post")){
+  //   return(
+  //     <div className="form-group" style={{textAlign:'right'}}>\
+  //       <Link to={props.route}>
+  //         <button type="button" className={props.class} onclick="submitForm()" id={props.id}>{props.text}</button>
+  //       </Link>
+  //     </div>
+  //   )
+  // }
   if(props.align == "left"){
     return(
       <div className="form-group" style={{textAlign:'left'}}>

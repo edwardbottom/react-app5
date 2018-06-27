@@ -9,7 +9,7 @@ import App from './App.js'
 //renders the routes to transfer data between screens
 ReactDOM.render(
   <App data="Somi is a ledgend"/>,
-  document.getElementById('root')
+  document.getElementById('wss')
 );
 
 

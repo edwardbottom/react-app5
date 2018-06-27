@@ -168,11 +168,12 @@ function text(props){
 		</div>
 	)
 }
+
 //creates a form using an array with form objects
 function createComplexForm(props){
 	if(props.length > 0){
         return(
-        	<div>
+        	<form>
             {/*iterates through the array*/}
       			{props.map(inputObj => {
         			if(inputObj.type === "header"){
@@ -267,10 +268,18 @@ function createComplexForm(props){
         				return(
         					<div>
         						<div class="bottomButtons">
-									<div class="row">
-  										<div class="col-xs-5 col-xs-offset-9"><a href="/accessrequest" class="btn btn-success">Confirm</a></div><br/><br/>
-  										<div class="col-xs-5 col-xs-offset-9"><a href="/accessrequest" class="btn btn-primary">Cancel</a></div>
-									</div>
+									   <div class="row">
+  										<div class="col-xs-5 col-xs-offset-9">
+                        {/*<Link to={props.route}>*/}
+                          <button type="button" className="btn btn-success" /*onclick="submitForm()"*/ id={props.id}>
+                            Submit
+                          </button>
+                        {/*</Link>*/}
+                      </div><br/><br/>
+  										<div class="col-xs-5 col-xs-offset-9">
+                        <a href="/accessrequest" className="btn btn-primary">Cancel</a>
+                      </div>
+									   </div>
         						</div>
         					</div>
         				)
@@ -284,7 +293,7 @@ function createComplexForm(props){
         			}
         			return null
       			})}
-   			 </div>
+   			 </form>
         	)
       }
 	else{
@@ -296,6 +305,35 @@ function createComplexForm(props){
 
 //renders the access request screen
 export default class ComplexScreen extends React.Component {
+  //constructor and state intialization
+  constructor(props) {
+    super(props);
+    this.state = {navData:this.props.navData//,
+      //content:this.props.content,
+      // postUrl:this.props.postUrl,
+      // postData:null,
+      //formID: this.props.formID
+    };
+  };
+
+  //state life cycle
+  componentDidMount() {
+    //use data to signify request to make request for content and then render page around it
+  }
+
+  // submitForm(){
+  //run extract of data
+  //   axios.post(this.state.postUrl, {
+  //     this.state.postData
+  //   })
+  //     .then(function (response) {
+  //       alert(response);
+  //     })
+  //     .catch(function (error) {
+  //       alert(error);
+  //     });
+  // }  
+
   render() {
     return (
       	<center>

@@ -29,6 +29,23 @@ const selectRowProp = {
 
 //class for a table with selection options
 export default class SelectBgColorTable extends React.Component {
+
+  // //constructor and state intialization
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     content:null
+  //   };
+  // };
+
+  // //state life cycle
+  // componentDidMount() {
+  //   axios.get(someURL)
+  //     .then(res => {
+  //       this.setState({ content });
+  //     })
+  // }
+
   render() {
     return (
       <BootstrapTable data={ products } selectRow={ selectRowProp }>

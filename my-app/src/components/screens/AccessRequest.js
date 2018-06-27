@@ -1,5 +1,6 @@
 //imports react libraries and navbar
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import Navigation from './Navigation';
 import {panel, createPanels, centerPanel} from './objects/panel';
 import {headerAndDescription, header} from './objects/HeaderAndDescription';
@@ -171,9 +172,9 @@ export default class AccessRequestScreen extends React.Component {
               </div>
               <div className="panel panel-success">
                 <div className="panel-heading">
-                  <a href='/complexscreen'>
+                  <Link to="/complexscreen" /*params=somethingToSignifyTheRequest*/>
                     <strong>Application Access V2 (dynamic Page)</strong>
-                  </a>
+                  </Link>
                 </div>
               </div>
               {panel(largeModalPanel)}
