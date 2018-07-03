@@ -113,7 +113,7 @@ export default class MyTasksScreen extends React.Component {
           <div className="container">
             <div id="My_Tasks_Screen">
               <div className="container">
-              <div className="row">
+                <div className="row">
                   <div className="d-inline">
                     <div>{rightSearchBar(otherSearchBar)}</div>
                     <div className="pull-right">{buttonWithLink(historyButton)}</div>

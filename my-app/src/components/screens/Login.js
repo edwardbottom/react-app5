@@ -44,7 +44,7 @@ export default class LoginScreen extends React.Component {
                       <label><input type="checkbox"></input> Remember me</label>
                     </div>
                     <a href="/home" className="btn btn-success" role="button">Login</a><br/><br/>
-                    <a href="http://somelink.com">Get WSS</a>
+                    <a href="http://somelink.com">Send Email</a>
                   </form>
                 </center>
               </div>

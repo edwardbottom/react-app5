@@ -13,55 +13,70 @@ import {get, post, processRequest} from './services/requests';
 import {textGroup, textGroups, textArea, singleSelect, multipleSelect, radioForm, checkBox} from './objects/FormGroup';
 
 //creates a screen using an array of component objects
-function createScreen(props){
-  if(props.length > 0){
-        return(
-          <div>
-            {props.map(inputObj => {
-              if(inputObj.type === "header"){
-                  return (
-                    <div>
-                      {header(inputObj)}
-                      <br/>
-                    </div>
-                )
-                }
-                else if(inputObj.type == "headerAndDescription"){
-                  return (
-                    <div>
-                      {headerAndDescription(inputObj)}
-                    </div>
-                  ) 
-                }
-                else if(inputObj.type == "linksPanel"){
-                  return(
-                    <div>
-                      {linksPanel(inputObj)}
-                    </div>
-                  )
-                }
-                else if(inputObj.type =="createPanels"){
-                  return(
-                    <div>
-                      {createPanels(inputObj.list)}
-                    </div>
-                  )
-                }
-              return null
-            })}
-         </div>
-        )
-      }
-  else{
-    return (
-      <p> Not a valid props </p>
-    )
-  }     
-}
+// function createScreen(props){
+//   if(props.length > 0){
+//         return(
+//           <div>
+//             {props.map(inputObj => {
+//               if(inputObj.type === "header"){
+//                   return (
+//                     <div>
+//                       {header(inputObj)}
+//                       <br/>
+//                     </div>
+//                 )
+//                 }
+//                 else if(inputObj.type == "headerAndDescription"){
+//                   return (
+//                     <div>
+//                       {headerAndDescription(inputObj)}
+//                     </div>
+//                   ) 
+//                 }
+//                 else if(inputObj.type == "linksPanel"){
+//                   return(
+//                     <div>
+//                       {linksPanel(inputObj)}
+//                     </div>
+//                   )
+//                 }
+//                 else if(inputObj.type =="createPanels"){
+//                   return(
+//                     <div>
+//                       {createPanels(inputObj.list)}
+//                     </div>
+//                   )
+//                 }
+//               return null
+//             })}
+//          </div>
+//         )
+//       }
+//   else{
+//     return (
+//       <p> Not a valid props </p>
+//     )
+//   }     
+// }
 
-function foo(props){
-  alert("the handler was reached");
-}
+// function foo(props){
+//   alert("the handler was reached");
+// }
+ function getProxy(event){
+   axios.get("http://localhost:3004/navBarObj")
+      .then(res => {
+        const navBarObj = res.data;
+      })
+      alert("before request")
+    axios.get("http://10.125.2.131/cdmt/dataService/WSSConfig")
+    alert("before then")
+    .then(res =>{
+      alert("request reached")
+      const returnData = res.data;
+      alert(returnData);
+      console.log(returnData);
+    })
+  }
 
 export default class DynamicBodyScreen extends React.Component {
   //constructor and state intialization
@@ -72,20 +87,50 @@ export default class DynamicBodyScreen extends React.Component {
     };
   };
 
-  //state life cycle
+//, {
+      // headers: {
+      //   'Content-Type': 'application/json',
+      //   'Access-Control-Allow-Origin' :'*',
+      //   'Access-Control-Allow-Methods' : 'GET'
+      // }
+     //}
+
+//   //state life cycle
   componentDidMount() {
-  }
-  //renders the html
-  render() {
-    return (
-      <div>
-        {createNavBar(this.state.nav)}
-          {<div className="container">
-            {this.state.content && this.state.content.length && <div> {createScreen(this.state.content)} </div>}
-          </div>}
-      </div>
-    );
-  }
+     axios.get("http://10.125.2.131/cdmt/dataService/WSSConfig").then(res => {
+        const budgetrequests = res.data;
+        console.log(budgetrequests)
+      })
+
+      var string = "panel.json";
+
+     axios.post("http://10.125.2.131/cdmt/dataService/WSSConfig", string, {
+        //add this header to the server
+        headers: {
+            'Content-Type' : 'text/plain; charset=UTF-8',
+            'authorization' : 'hello world'
+        }
+      })
+      .then(res => {
+        const budgetrequests = res.data;
+        console.log(budgetrequests)
+      })
+      .catch((err) => {
+      console.log("AXIOS ERROR: ", err);
+      })
+   }
+
+//   //renders the html
+//   render() {
+//     return (
+//       <div>
+//         {createNavBar(this.state.nav)}
+//           {<div className="container">
+//             {this.state.content && this.state.content.length && <div> {createScreen(this.state.content)} </div>}
+//           </div>}
+//       </div>
+//     );
+//   }
 
   // onItemClick(event) {
   //   var serialize = require('form-serialize');
@@ -99,14 +144,16 @@ export default class DynamicBodyScreen extends React.Component {
   //     })
   // }
 
-  // render(){
-  //   return(
-  //     <form id="example-form">
-  //       <input type="text" name="something"/>
-  //       <a href="/home" role="button" onClick={this.onItemClick} className="btn btn-success">Login</a>
-  //     </form>
-  //     )
-  // }
+ 
+
+  render(){
+    return(
+      <div>
+        {/*<input type="text" name="something"/>*/}
+        <p> this is a page </p>
+      </div>
+      )
+  }
 }
 
 
