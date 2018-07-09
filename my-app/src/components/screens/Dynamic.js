@@ -11,7 +11,29 @@ import axios from 'axios';
 import {modalButton, basicModal} from './objects/forms';
 import {get, post, processRequest} from './services/requests';
 import {textGroup, textGroups, textArea, singleSelect, multipleSelect, radioForm, checkBox} from './objects/FormGroup';
+import {form} from './objects/formsWithData';
 
+let formObj = new Object();
+formObj.id = "sample-form";
+
+let inputArray = [];
+let i = new Object();
+i.type = "text";
+i.name = "username";
+i.placeholder = "username";
+let j = new Object();
+j.type = "password";
+j.name = "password";
+j.placeholder = "password";
+let k = new Object();
+k.type = "text";
+k.name = "type";
+k.placeholder = "Type";
+inputArray.push(i);
+inputArray.push(j);
+inputArray.push(k);
+
+formObj.inputArray = inputArray;
 //creates a screen using an array of component objects
 // function createScreen(props){
 //   if(props.length > 0){
@@ -97,27 +119,27 @@ export default class DynamicBodyScreen extends React.Component {
 
 //   //state life cycle
   componentDidMount() {
-     axios.get("http://10.125.2.131/cdmt/dataService/WSSConfig").then(res => {
-        const budgetrequests = res.data;
-        console.log(budgetrequests)
-      })
+     // axios.get("http://10.125.2.131/cdmt/dataService/WSSConfig").then(res => {
+     //    const budgetrequests = res.data;
+     //    console.log(budgetrequests)
+     //  })
 
-      var string = "panel.json";
+     //  var string = "panel.json";
 
-     axios.post("http://10.125.2.131/cdmt/dataService/WSSConfig", string, {
-        //add this header to the server
-        headers: {
-            'Content-Type' : 'text/plain; charset=UTF-8',
-            'authorization' : 'hello world'
-        }
-      })
-      .then(res => {
-        const budgetrequests = res.data;
-        console.log(budgetrequests)
-      })
-      .catch((err) => {
-      console.log("AXIOS ERROR: ", err);
-      })
+     // axios.post("http://10.125.2.131/cdmt/dataService/WSSConfig", string, {
+     //    //add this header to the server
+     //    headers: {
+     //        'Content-Type' : 'text/plain; charset=UTF-8',
+     //        'authorization' : 'hello world'
+     //    }
+     //  })
+     //  .then(res => {
+     //    const budgetrequests = res.data;
+     //    console.log(budgetrequests)
+     //  })
+     //  .catch((err) => {
+     //  console.log("AXIOS ERROR: ", err);
+     //  })
    }
 
 //   //renders the html
@@ -132,25 +154,20 @@ export default class DynamicBodyScreen extends React.Component {
 //     );
 //   }
 
-  // onItemClick(event) {
-  //   var serialize = require('form-serialize');
-  //   var form = document.querySelector('#example-form');
-  //   var obj = serialize(form, { hash: true });
-  //   alert(obj.something);
-  //   axios.get("http://localhost:3004/budgetrequests")
-  //     .then(res => {
-  //       const budgetrequests = res.data;
-  //       alert(budgetrequests);
-  //     })
-  // }
+  createJson(event){
+    var serialize = require('form-serialize');
+    var form = document.querySelector('#sample-form');
+    var obj = serialize(form, { hash: true });
+    console.log(obj);
+  }
 
  
 
   render(){
     return(
       <div>
-        {/*<input type="text" name="something"/>*/}
-        <p> this is a page </p>
+        {form(formObj)}
+        <button onClick={this.createJson}> Click </button>
       </div>
       )
   }

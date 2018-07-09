@@ -18,6 +18,7 @@ export function textGroup(props){
 	return(
 		  <FormGroup inline controlId={props.id}>
     		<ControlLabel>{props.label}</ControlLabel>{' '}<br/>
+        {/*insert a name property here*/}
     		<FormControl type={props.type} bsSize={props.size} placeholder={props.placeholder} />{' '}
     		<div class="divider"/>
   		</FormGroup>
@@ -41,6 +42,7 @@ export function textGroups(props){
 }
 
 //helper function that creates a option for single and multiple select forms
+//add a name property to this function
 function selectOption(props){
 	return(
         <option value="select">{props.label}</option>
@@ -80,6 +82,7 @@ export function multipleSelect(props){
 }
 
 //creates a large textbox
+//add a name property
 export function textArea(props){
 	return(
 		<FormGroup controlId="formControlsTextarea">
@@ -90,6 +93,7 @@ export function textArea(props){
 }
 
 //helper function that creates a single option in a radio form
+//modify name values
 function radioOption(props){
 	return(
 		<div>

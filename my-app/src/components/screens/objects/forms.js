@@ -4,27 +4,26 @@ import {rightSearchBar} from './SearchBar';
 import {table} from './table';
 
 
-//todo: modify for more types of input and more json documentation
 //takes in the parameters for an input value and returns an approiate form of input
 export function input(props){
   if(props.hasOwnProperty("type") && props.hasOwnProperty("id") && props.hasOwnProperty("placeholder")){
     return(
       <div>
-        <input type={props.type} id={props.id} placeholder={props.placeholder}></input><br/><br/>
+        <input type={props.type} name={props.id} placeholder={props.placeholder}></input><br/><br/>
       </div>
     );
   }
 	else if(props.hasOwnProperty("type") && props.hasOwnProperty("id") && props.hasOwnProperty("class") && props.hasOwnProperty("value")){
     return(
       <div>
-        <input type={props.type} id={props.id} className={props.placeholder} value={props.value}></input><br/><br/>
+        <input type={props.type} name={props.id} className={props.placeholder} value={props.value}></input><br/><br/>
       </div>
     );
   }
   else if(props.hasOwnProperty("type") && props.hasOwnProperty("name") && props.hasOwnProperty("id")){
     return(
       <div class="radio">
-        <label><input type={props.type} className={props.class} id={props.id}>Non-Human Request</input></label><br/><br/>
+        <label><input type={props.type} className={props.class} name={props.id}>Non-Human Request</input></label><br/><br/>
       </div>
     );
   }
@@ -36,7 +35,7 @@ export function formGroup(props){
   return (
     <div class="form-group">
       <label for="usr">{props.label}</label>
-      <input type={props.type} className="form-control" id={props.id}></input>
+      <input type={props.type} className="form-control" name={props.id}></input>
     </div>
   )
 }
@@ -90,11 +89,11 @@ export function formGroupColSize(props){
         {props.inputArray.map((inputObj, index) =>
           <div>
             <label for={inputObj.id}>{inputObj.label}</label>
-            <input type={inputObj.type} className={inputObj.className} id={inputObj.id} placeholder={inputObj.placeholder}></input>
+            <input type={inputObj.type} className={inputObj.className} name={inputObj.id} placeholder={inputObj.placeholder}></input>
           </div>
         )}
         <div>
-          <button type="button" className="btn btn-success" id={props.buttonId}>{props.buttonLabel}</button>
+          <button type="button" className="btn btn-success" name={props.buttonId}>{props.buttonLabel}</button>
         </div>
       </div>
     </div>
