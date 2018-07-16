@@ -101,6 +101,7 @@ export default class BudgetRequestsScreen extends React.Component {
     this.state = {navData:this.props.navData,
       content:null,
     };
+    this.state.navData.list[2].active = "true";
   };
 
   //state life cycle

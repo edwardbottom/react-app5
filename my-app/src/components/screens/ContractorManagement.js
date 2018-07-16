@@ -131,6 +131,7 @@ export default class ContractorManagementScreen extends React.Component {
     this.state = {navData:this.props.navData,
       content:null,
     };
+    this.state.navData.list[3].active = "true";
   };
 
   //state life cycle

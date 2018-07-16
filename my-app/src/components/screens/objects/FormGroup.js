@@ -19,7 +19,7 @@ export function textGroup(props){
 		  <FormGroup inline controlId={props.id}>
     		<ControlLabel>{props.label}</ControlLabel>{' '}<br/>
         {/*insert a name property here*/}
-    		<FormControl type={props.type} bsSize={props.size} placeholder={props.placeholder} />{' '}
+    		<FormControl type={props.type} name={props.id} bsSize={props.size} placeholder={props.placeholder} />{' '}
     		<div class="divider"/>
   		</FormGroup>
       
@@ -28,17 +28,32 @@ export function textGroup(props){
 
 //function that uses an array of textGroup objects to create a form
 export function textGroups(props){
-	return(
-		<div>
-			<Form inline>
-        <div class="form-group row">
-      		{props.inputArray.map((inputObj, index) =>
-        		textGroup(inputObj)
-      		)}
-        </div>
-      </Form>
-    </div>
-	)
+  if(props.hasOwnProperty("inline")){
+    return(
+      <div>
+        <Form inline>
+          <div class="form-group row">
+            {props.inputArray.map((inputObj, index) =>
+              textGroup(inputObj)
+            )}
+          </div>
+        </Form>
+      </div>
+    )
+  }
+  else{
+    return(
+      <div>
+        <Form>
+          <div class="form-group row">
+            {props.inputArray.map((inputObj, index) =>
+              textGroup(inputObj)
+            )}
+          </div>
+        </Form>
+      </div>
+    )
+  }
 }
 
 //helper function that creates a option for single and multiple select forms
@@ -53,14 +68,14 @@ function selectOption(props){
 export function singleSelect(props){
 	return(
 		<FormGroup controlId="formControlsSelect">
-      		<ControlLabel>{props.label}</ControlLabel>
-      		<FormControl componentClass="select" placeholder="select">
-        		{props.inputArray.map((inputObj, index) =>
-        			selectOption(inputObj)
-      			)}
-      			<option value="other">...</option>
-      		</FormControl>
-    	</FormGroup>
+      <ControlLabel>{props.label}</ControlLabel>
+      <FormControl componentClass="select" placeholder="select">
+        {props.inputArray.map((inputObj, index) =>
+        	selectOption(inputObj)
+      	)}
+      	<option value="other">...</option>
+      </FormControl>
+    </FormGroup>
 	)
 }
 
@@ -95,27 +110,32 @@ export function textArea(props){
 //helper function that creates a single option in a radio form
 //modify name values
 function radioOption(props){
-	return(
-		<div>
-			<Radio inline name="radioGroup" >
-        		{props.label}
-      		</Radio>{' '}
-      	</div>
-	)
+  if(props.hasOwnProperty("inline")){
+    return(
+      <Radio name="radioGroup" inline>
+          {props.label}
+        </Radio>
+    )
+  }
+  else{
+    return(
+      <Radio name="radioGroup">
+          {props.label}
+        </Radio>
+    )
+  }
 }
 
 //uses an array of radioOption objects to create a radio form
 export function radioForm(props){
 	return(
-    <div align={props.align}>
-		  <form inline>
-			 <FormGroup>
+    <div>
+			<FormGroup>
 		 		{props.inputArray.map((inputObj, index) =>
-        			radioOption(inputObj)
+        		radioOption(inputObj)
       	 )}
-    		</FormGroup>
-    		<br/>
-    	</form>
+    	</FormGroup>
+    	<br/>
     </div>
 	)
 }
@@ -134,15 +154,6 @@ export function checkBox(props){
 //todo: update json objects for handlers and callback
 //creates a button aligned to the right side of the screen
 export function button(props){
-  // if(props.hasOwnProperty("post")){
-  //   return(
-  //     <div className="form-group" style={{textAlign:'right'}}>\
-  //       <Link to={props.route}>
-  //         <button type="button" className={props.class} onclick="submitForm()" id={props.id}>{props.text}</button>
-  //       </Link>
-  //     </div>
-  //   )
-  // }
   if(props.align == "left"){
     return(
       <div className="form-group" style={{textAlign:'left'}}>

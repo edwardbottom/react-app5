@@ -65,6 +65,7 @@ let navtwo = new Object();
 navtwo.id = "access_request_listener";
 navtwo.path= "/accessrequest";
 navtwo.description="Access Request";
+navtwo.active = true;
 
 let navthree = new Object();
 navthree.id = "budget_request_listener";
@@ -129,6 +130,7 @@ export default class AccessRequestScreen extends React.Component {
       //url:this.props.url
       //url:"http://localhost:3004/content"
     };
+    this.state.navData.list[1].active = "true";
   };
 
   //state life cycle

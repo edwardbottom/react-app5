@@ -95,6 +95,7 @@ export default class MyTasksScreen extends React.Component {
       //url:this.props.url
       //url:"http://localhost:3004/content"
     };
+    this.state.navData.list[0].active = "true";
   };
 
   //state life cycle

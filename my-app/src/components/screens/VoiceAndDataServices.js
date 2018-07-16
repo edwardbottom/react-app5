@@ -135,6 +135,7 @@ export default class VoiceAndDataServicesScreen extends React.Component {
     this.state = {navData:this.props.navData,
       content:null,
     };
+    this.state.navData.list[6].active = "true";
   };
 
   //state life cycle

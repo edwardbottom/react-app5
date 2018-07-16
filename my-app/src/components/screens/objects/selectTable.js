@@ -21,35 +21,69 @@ function addProducts(quantity) {
 
 addProducts(3);
 
+
+var totalSelected = 0;
+
+function onRowSelect(row, isSelected, e, rowIndex) {
+  console.log(row)
+  console.log(isSelected)
+  console.log(e)
+  console.log(rowIndex)
+  if(isSelected){
+    ++totalSelected;
+  }
+  else{
+    --totalSelected;
+  }
+}
+
+function onSelectAll(isSelected, rows) {
+  console.log(isSelected)
+  console.log(rows)
+  if(isSelected){
+    totalSelected += rows.length;
+  }
+  else{
+    totalSelected -= rows.length;
+  }
+}
+
 //table color setup
 const selectRowProp = {
   mode: 'checkbox',
-  bgColor: '#bbff99'
+  bgColor: '#bbff99',
+  mode: 'checkbox',
+  clickToSelect: true,
+  onSelect: onRowSelect,
+  onSelectAll: onSelectAll
 };
 
 //class for a table with selection options
 export default class SelectBgColorTable extends React.Component {
 
-  // //constructor and state intialization
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     content:null
-  //   };
-  // };
+  //constructor and state intialization
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected:0
+    };
+    alert(totalSelected)
+  };
 
   // //state life cycle
-  // componentDidMount() {
-  //   axios.get(someURL)
-  //     .then(res => {
-  //       this.setState({ content });
-  //     })
-  // }
+  componentDidMount() {
+    // axios.get(someURL)
+    //   .then(res => {
+    //     this.setState({ content });
+    //   })
+    //alert(this.state.totalSelected);
+  }
 
   render() {
     return (
       <BootstrapTable data={ products } selectRow={ selectRowProp }>
-          <TableHeaderColumn dataField='Task' isKey={true}>Description</TableHeaderColumn>
+          <TableHeaderColumn dataField='id' hidden = {true} isKey></TableHeaderColumn>
+          <TableHeaderColumn dataField='Task'>Description</TableHeaderColumn>
           <TableHeaderColumn dataField='Description'>Request</TableHeaderColumn>
       </BootstrapTable>
     );

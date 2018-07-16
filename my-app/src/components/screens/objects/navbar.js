@@ -4,6 +4,11 @@ import {rightSearchBar} from './SearchBar';
 
 //a helper funciton that uses an id, path, and description to create an object in the navbar
 function navIteam(props){
+  if(props.hasOwnProperty("active")){
+    return(
+      <li className = "active"><a id={props.id} href={props.path}>{props.description}</a></li>
+    );
+  }
 	return(
 		<li><a id={props.id} href={props.path}>{props.description}</a></li>
 	);
@@ -14,7 +19,7 @@ export function createNavBar(props){
 	return (
 		<div id="navigation">
       	{/*navigation bar styling */}
-        <nav className="navbar navbar-inverse">
+        <nav className="navbar navbar-inverse active" role="navigation">
           <div className="container-fluid">
             <div className="navbar-header">
               <a className="navbar-left" href={props.titlePath}><img src="CTL Logo Reverse NA.png" 

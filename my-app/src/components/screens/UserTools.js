@@ -198,6 +198,7 @@ export default class UserToolsScreen extends React.Component {
     this.state = {navData:this.props.navData,
       content:null,
     };
+    this.state.navData.list[5].active = "true";
   };
 
   //state life cycle

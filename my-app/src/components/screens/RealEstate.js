@@ -139,6 +139,7 @@ export default class RealEstateScreen extends React.Component {
     this.state = {navData:this.props.navData,
       content:null,
     };
+    this.state.navData.list[4].active = "true";
   };
 
   //state life cycle
