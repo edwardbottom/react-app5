@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { FormGroup,ControlLabel,FormControl,HelpBlock,Checkbox,Radio,inline,Form} from 'react-bootstrap';
+import axios from 'axios';
+var serialize = require('form-serialize');
+
 
 //creates a group of input objects
 function FieldGroup({ id, label, help, ...props }) {
@@ -15,14 +18,33 @@ function FieldGroup({ id, label, help, ...props }) {
 //helper function that creates a single textbox
 //todo: add in a name property for this so it can be synthesized into a json object
 export function textGroup(props){
+  if(props.size == "large"){
+    return(
+        <div className="col-xs-4">
+          <center>
+            <label for="ex1">{props.label}</label>
+          </center>
+          <input className="form-control" name={props.id} type="text" placeholder={props.placeholder}/>
+        </div>
+    )
+  }
+  else if(props.size == "small"){
+    return(
+      <div className="col-xs-2">
+        <center>
+          <label for="ex1">{props.label}</label>
+        </center>
+        <input className="form-control" name={props.id} type="text" placeholder={props.placeholder}/>
+      </div>
+    )
+  }
 	return(
-		  <FormGroup inline controlId={props.id}>
-    		<ControlLabel>{props.label}</ControlLabel>{' '}<br/>
-        {/*insert a name property here*/}
-    		<FormControl type={props.type} name={props.id} bsSize={props.size} placeholder={props.placeholder} />{' '}
-    		<div class="divider"/>
-  		</FormGroup>
-      
+        <div className="col-xs-3">
+          <center>
+            <label for="ex1">{props.label}</label>
+          </center>
+          <input className="form-control" name={props.id} type="text" placeholder={props.placeholder}/>
+        </div>
 	)
 }
 
@@ -31,13 +53,11 @@ export function textGroups(props){
   if(props.hasOwnProperty("inline")){
     return(
       <div>
-        <Form inline>
-          <div class="form-group row">
+          <div className="form-group row">
             {props.inputArray.map((inputObj, index) =>
               textGroup(inputObj)
             )}
           </div>
-        </Form>
       </div>
     )
   }
@@ -45,7 +65,7 @@ export function textGroups(props){
     return(
       <div>
         <Form>
-          <div class="form-group row">
+          <div className="form-group">
             {props.inputArray.map((inputObj, index) =>
               textGroup(inputObj)
             )}
@@ -60,7 +80,7 @@ export function textGroups(props){
 //add a name property to this function
 function selectOption(props){
 	return(
-        <option value="select">{props.label}</option>
+        <option value="select" name={props.name}>{props.label}</option>
     )
 }
 
@@ -112,14 +132,14 @@ export function textArea(props){
 function radioOption(props){
   if(props.hasOwnProperty("inline")){
     return(
-      <Radio name="radioGroup" inline>
+      <Radio name={props.label} inline>
           {props.label}
         </Radio>
     )
   }
   else{
     return(
-      <Radio name="radioGroup">
+      <Radio name={props.label}>
           {props.label}
         </Radio>
     )
@@ -177,3 +197,63 @@ export function button(props){
   }
 }
 
+//helper function that creates a option in a drop down menue
+function dropDown(props){
+  return(
+    <li><a href={props.link}>{props.text}</a></li>
+    )
+}
+
+//function that sends a request to get an array of drop down Objects and appends
+//them to a drop down button
+export function dropDownButtonRequest(props){
+  const url = props.url;
+  axios.get(url)
+  .then(res => {
+    const responseObject = res.data;
+    console.log(responseObject)
+    return(
+      <div class="dropdown">
+        <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">
+          {props.text}<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          {props.inputArray.map((inputObj, index) =>
+            dropDown(inputObj)
+         )}
+        </ul>
+      </div>
+    )
+  })
+  .catch((err) => {
+    console.log("AXIOS ERROR: ", err);
+    return (<p> request failed to get dropDown </p>);
+  })
+}
+
+//handler to submit a form
+function submitForm(props){
+  let form = document.querySelector(props.formId);
+  var obj = JSON.stringify(serialize(form, { hash: true }));
+  console.log(obj);
+}
+
+//creates the buttons to submit a form or leave a form
+export function confirmButtons(props){
+  return(
+    <div className="bottomButtons">
+      <div className="row">
+        <div className="col-xs-5 col-xs-offset-9">
+          {/*<a href={props.route}>*/}
+            <button className="btn btn-success" 
+              onClick= {this.submitForm(props)}>Submit
+            </button>
+          {/*</a>*/}
+        </div><br/><br/>
+        <div className="col-xs-5 col-xs-offset-9">
+          <a href={props.route} className="btn btn-primary">Cancel</a>
+        </div>
+      </div>
+    </div>
+  )
+}

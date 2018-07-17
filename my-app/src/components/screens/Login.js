@@ -34,11 +34,11 @@ export default class LoginScreen extends React.Component {
                   <form action="/I_hate_php.php">
                     <div className="form-group">
                       <label for="username">Username:</label>
-                      <input type="username" class="form-control" id="username" placeholder="username"></input>
+                      <input type="username" class="form-control" id="username" placeholder="CenturyLink Common User ID"></input>
                     </div>
                     <div className="form-group">
                       <label for="pwd">Password:</label>
-                      <input type="password" className="form-control" id="pwd" placeholder="password"></input>
+                      <input type="password" className="form-control" id="pwd" placeholder="CUID password"></input>
                     </div>
                     <div className="checkbox">
                       <label><input type="checkbox"></input> Remember me</label>

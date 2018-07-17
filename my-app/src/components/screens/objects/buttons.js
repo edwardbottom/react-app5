@@ -33,7 +33,7 @@ export function dropDownButton(props){
   return(
     <div>
       <div className="dropdown">
-        <button className="btn btn-success dropdown-toggle" type="button" id={props.id} data-toggle="dropdown">
+        <button className="btn btn-success dropdown-toggle" type="button" name={props.id} data-toggle="dropdown">
           {props.description}
         <span class="caret"></span></button>
         <ul className="dropdown-menu">

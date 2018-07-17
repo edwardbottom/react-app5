@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import {textGroup, textGroups, selectOption, 
 	singleSelect, multipleSelect, textArea, 
-	radioOption, radioForm, checkBox, button} from './objects/FormGroup';
+	radioOption, radioForm, checkBox, button,
+  dropDownButtonRequest, confirmButtons} from './objects/FormGroup';
 import {createNavBar} from './objects/navbar';
 import {headerAndDescription, header} from './objects/HeaderAndDescription';
+import {dropDownButton} from './objects/buttons';
 
 //random data
 var objArray = [];
@@ -15,6 +17,7 @@ objArray.push(h);
 
 var t = new Object();
 t.type = "text";
+t.align = "center";
 t.text = "Search Type:";
 objArray.push(t);
 
@@ -28,10 +31,10 @@ rArray.push(radio);
 var something = new Object();
 something.type = "radioForm";
 something.inputArray = rArray;
-something.align = "center";
 objArray.push(something);
 
 var textBoxes = [];
+textBoxes.align = "left";
 textBoxes.inline = true;
 var textBox = new Object();
 textBox.id = "last_name";
@@ -64,8 +67,9 @@ textBoxes.push(qBox);
 
 
 var ttt = new Object();
+ttt.align = "right";
 ttt.type = "textGroups";
-ttt.inputArray = textBoxes
+ttt.inputArray = textBoxes;
 ttt.inline = true;
 objArray.push(ttt);
 
@@ -84,6 +88,7 @@ mObject.label = "Search Results";
 var iArray = [];
 var o12 = new Object();
 o12.label = "A user from the database via the search";
+o12.name = "multiselect[]";
 iArray.push(o12);
 iArray.push(o12);
 iArray.push(o12);
@@ -101,7 +106,10 @@ objArray.push(check);
 
 var sButton = new Object();
 sButton.type = "confirmButtons";
-objArray.push(sButton);
+sButton.route = "/accessrequest"
+sButton.formId = "#" + "objectData";
+// objArray.push(sButton);
+
 
 //creates text from an object passed in
 function text(props){
@@ -116,10 +124,26 @@ function text(props){
 function createComplexForm(props){
 	if(props.length > 0){
         return(
-        	<form id = {props.id}>
+        	<form id = "objectData">
             {/*iterates through the array*/}
       			{props.map(inputObj => {
         			if(inputObj.type === "header"){
+                if(inputObj.align == "left"){
+                  return (
+                    <div style={{textAlign:'left'}}>
+                      {header(inputObj)}
+                      <br/>
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return (
+                    <div style={{textAlign:'right'}}>
+                      {header(inputObj)}
+                      <br/>
+                    </div>
+                  )
+                }
                 return (
           				<div>
            					{header(inputObj)}
@@ -128,6 +152,20 @@ function createComplexForm(props){
          				)
           		}
           		else if(inputObj.type == "headerAndDescription"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {headerAndDescription(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {headerAndDescription(inputObj)}
+                    </div>
+                  )
+                }
           			return (
           				<div>
           					{headerAndDescription(inputObj)}
@@ -135,6 +173,20 @@ function createComplexForm(props){
           			)	
         			}
         			else if(inputObj.type == "textGroup"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {textGroup(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {textGroup(inputObj)}
+                    </div>
+                  )
+                }
         				return (
           					<div>
           						{textGroup(inputObj)}
@@ -142,6 +194,20 @@ function createComplexForm(props){
           				)
         			}
         			else if(inputObj.type == "textGroups"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {textGroups(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {textGroups(inputObj)}
+                    </div>
+                  )
+                }
         				return (
           					<div>
           						{textGroups(inputObj)}
@@ -149,6 +215,20 @@ function createComplexForm(props){
           				)
         			}
         			else if(inputObj.type == "singleSelect"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {singleSelect(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {singleSelect(inputObj)}
+                    </div>
+                  )
+                }
         				return (
           					<div>
           						{singleSelect(inputObj)}
@@ -156,6 +236,20 @@ function createComplexForm(props){
           				)
         			}
         			else if(inputObj.type == "multipleSelect"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {multipleSelect(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {multipleSelect(inputObj)}
+                    </div>
+                  )
+                }
         				return (
           					<div>
           						{multipleSelect(inputObj)}
@@ -164,6 +258,22 @@ function createComplexForm(props){
         			}
         			else if(inputObj.type == "multipleSelects"){
                 if(inputObj.hasOwnProperty("inline")){
+                  if(inputObj.align == "left"){
+                    return(
+                      <div class="form-inline" style={{textAlign:'left'}}>
+                        {multipleSelect(inputObj)}
+                        {multipleSelect(inputObj)}
+                      </div>
+                    )
+                  }
+                  else if(inputObj.align == "right"){
+                    return(
+                      <div class="form-inline" style={{textAlign:'right'}}>
+                        {multipleSelect(inputObj)}
+                        {multipleSelect(inputObj)}
+                      </div>
+                    )
+                  }
                   return(
                     <div class="form-inline">
                       {multipleSelect(inputObj)}
@@ -172,6 +282,22 @@ function createComplexForm(props){
                   )
                 }
         				else{
+                  if(inputObj.align == "left"){
+                    return(
+                      <div style={{textAlign:'left'}}>
+                        {multipleSelect(inputObj)}
+                        {multipleSelect(inputObj)}
+                      </div>
+                    )
+                  }
+                  else if(inputObj.align == "right"){
+                    return(
+                      <div style={{textAlign:'right'}}>
+                        {multipleSelect(inputObj)}
+                        {multipleSelect(inputObj)}
+                      </div>
+                    )
+                  }
                   return(
                     <div>
                       {multipleSelect(inputObj)}
@@ -181,6 +307,20 @@ function createComplexForm(props){
                 }
         			}
         			else if(inputObj.type == "textArea"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {textArea(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {textArea(inputObj)}
+                    </div>
+                  )
+                }
         				return (
           					<div>
           						{textArea(inputObj)}
@@ -188,6 +328,20 @@ function createComplexForm(props){
           				)
         			}
         			else if(inputObj.type == "radioForm"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {radioForm(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {radioForm(inputObj)}
+                    </div>
+                  )
+                }
         				return (
           					<div>
           						{radioForm(inputObj)}
@@ -195,6 +349,20 @@ function createComplexForm(props){
           				)
         			}
         			else if(inputObj.type == "checkBox"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {checkBox(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {checkBox(inputObj)}
+                    </div>
+                  )
+                }
         				return (
           					<div>
           						{checkBox(inputObj)}
@@ -202,6 +370,20 @@ function createComplexForm(props){
           				)
         			}
         			else if(inputObj.type == "text"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {text(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {text(inputObj)}
+                    </div>
+                  )
+                }
         				return(
         					<div>
         						{text(inputObj)}
@@ -209,6 +391,20 @@ function createComplexForm(props){
         				)
         			}
         			else if(inputObj.type == "button"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {button(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {button(inputObj)}
+                    </div>
+                  )
+                }
         				return(
         					<div>
                     <br/>
@@ -217,32 +413,89 @@ function createComplexForm(props){
         				)
         			}
         			else if(inputObj.type == "confirmButtons"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {confirmButtons(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {confirmButtons(inputObj)}
+                    </div>
+                  )
+                }
         				return(
         					<div>
-        						<div class="bottomButtons">
-									   <div class="row">
-  										<div class="col-xs-5 col-xs-offset-9">
-                        {/*<Link to={props.route}>*/}
-                          <button type="button" className="btn btn-success" /*onclick="submitForm()"*/ id={props.id}>
-                            Submit
-                          </button>
-                        {/*</Link>*/}
-                      </div><br/><br/>
-  										<div class="col-xs-5 col-xs-offset-9">
-                        <a href="/accessrequest" className="btn btn-primary">Cancel</a>
-                      </div>
-									   </div>
-        						</div>
+        						{confirmButtons(inputObj)}
         					</div>
         				)
         			}
         			else if(inputObj.type == "check"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {checkBox(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {checkBox(inputObj)}
+                    </div>
+                  )
+                }
         				return(
         					<div>
         						{checkBox(inputObj)}
         					</div>
         					)
         			}
+              else if(inputObj.type == "dropDownButtonSmall"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {dropDownButton(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {dropDownButton(inputObj)}
+                    </div>
+                  )
+                }
+                return(
+                  <div>
+                    {dropDownButton(inputObj)}
+                  </div>
+                  )
+              }
+              else if(inputObj.type == "dropDownButtonRequest"){
+                if(inputObj.align == "left"){
+                  return(
+                    <div style={{textAlign:'left'}}>
+                      {dropDownButtonRequest(inputObj)}
+                    </div>
+                  )
+                }
+                else if(inputObj.align == "right"){
+                  return(
+                    <div style={{textAlign:'right'}}>
+                      {dropDownButtonRequest(inputObj)}
+                    </div>
+                  )
+                }
+                return(
+                  <div>
+                    {dropDownButtonRequest(inputObj)}
+                  </div>
+                  )
+              }
         			return null
       			})}
    			 </form>
@@ -261,10 +514,7 @@ export default class ComplexScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //content:this.props.content,
-      // postUrl:this.props.postUrl,
-      // postData:null,
-      //formID: this.props.formID
+      formId: "#objectData"
     };
   };
 
@@ -273,24 +523,32 @@ export default class ComplexScreen extends React.Component {
     //use data to signify request to make request for content and then render page around it
   }
 
-  // submitForm(){
-  //run extract of data
-  //   axios.post(this.state.postUrl, {
-  //     this.state.postData
-  //   })
-  //     .then(function (response) {
-  //       alert(response);
-  //     })
-  //     .catch(function (error) {
-  //       alert(error);
-  //     });
-  // }  
+  submitForm(){
+    var serialize = require('form-serialize');
+    var form = document.querySelector('#objectData');
+    var obj = serialize(form, { hash: true });
+    console.log(obj);
+  }  
 
   render() {
     return (
       	<center>
           <div className="container">
             {createComplexForm(objArray)}
+            <div className="bottomButtons">
+              <div className="row">
+                <div className="col-xs-5 col-xs-offset-9">
+                  {/*<a href={props.route}>*/}
+                    <button className="btn btn-success" 
+                      onClick= {this.submitForm}>Submit
+                    </button>
+                  {/*</a>*/}
+                </div><br/><br/>
+                <div className="col-xs-5 col-xs-offset-9">
+                  <a href={"/accessrequest"} className="btn btn-primary">Cancel</a>
+                </div>
+              </div>
+            </div>
           </div>
         </center>
     );

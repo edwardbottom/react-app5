@@ -8,71 +8,12 @@ import {rightSearchBar} from './objects/SearchBar';
 import {table} from './objects/table';
 import {createNavBar} from './objects/navbar';
 import {formGroup, formGroups, buttonWithRoute} from './objects/forms';
+import axios from 'axios';
+
 
 //random data
-let navBarObj = new Object();
-navBarObj.titlePath = "/home";
-let navItems = [];
-let navone = new Object();
-navone.id = "my_tasks_listener"
-navone.path= "/home"
-navone.action= "loadMyTasks();"
-navone.description= "My Tasks";
-
-let navtwo = new Object();
-navtwo.id = "access_request_listener";
-navtwo.path= "/accessrequest";
-navtwo.description="Access Request";
-
-let navthree = new Object();
-navthree.id = "budget_request_listener";
-navthree.path= "/budgetrequests";
-navthree.description="Budget Request";
-
-let navfour = new Object();
-navfour.id = "contractor_management_listener";
-navfour.path= "/contractormanagement";
-navfour.description="Contractor Management";
-
-let navfive = new Object();
-navfive.id = "real_estate_listener";
-navfive.path= "/realestate";
-navfive.description="Real Estate"
-
-let navseven = new Object();
-navseven.id = "user_tools_listener";
-navseven.path= "/usertools";
-navseven.description="User Tools"
-
-let naveight = new Object();
-naveight.id = "voice_and_data_services_listener"
-naveight.path= "/voiceanddataservices"
-naveight.description="Voice and Data Services"
-
-let navnine = new Object();
-navnine.id= "logout"
-navnine.path= "/"
-navnine.description="Logout"
-
-navItems.push(navone);
-navItems.push(navtwo);
-navItems.push(navthree);
-navItems.push(navfour);
-navItems.push(navfive);
-navItems.push(navseven);
-navItems.push(naveight);
-navItems.push(navnine);
-
-navBarObj.list = navItems;
-
-let searchBar = new Object();
-searchBar.router = "phpIsTheWorst";
-searchBar.placeholder = "Search WSS System";
-
-navBarObj.searchbar = searchBar;
-
 let formGroup1 = new Object();
-formGroup1.label = "UserName: ";
+formGroup1.label = "Username: ";
 formGroup1.type = "text";
 formGroup1.id = "usr";
 let formGroup2 = new Object();
@@ -84,7 +25,7 @@ formGroup3.label = "New Password: ";
 formGroup3.type = "password";
 formGroup3.id = "npass";
 let formGroup4 = new Object();
-formGroup4.label = "ReRenter New PAssword";
+formGroup4.label = "ReRenter New Password";
 formGroup4.type = "password";
 formGroup4.id = "rnpass";
 
@@ -108,16 +49,29 @@ cancelButton.label = "Cancel";
 
 //renders the access request screen
 export default class ChangePasswordScreen extends React.Component {
+  createJson(event){
+    var serialize = require('form-serialize');
+    var form = document.querySelector('#p-form');
+    var obj = serialize(form, { hash: true });
+    console.log(obj);
+    axios.post('http://localhost:3004/', obj);
+  }
+
   render() {
     return (
       <div>
-        {createNavBar(navBarObj)}
         <div className="container">
-          {formGroups(formGroupObj)}
-          {buttonWithRoute(cancelButton)}
-          <div class="divider"/>
-          {buttonWithRoute(confirmButton)}
-          
+          <form id="p-form">
+            {formGroups(formGroupObj)}
+            {buttonWithRoute(cancelButton)}
+            <div class="divider"/>
+            {/*buttonWithRoute(confirmButton)*/}
+            <a href={"/usertools"}>
+              <button className="btn btn-success" 
+                onClick= {this.createJson}>Submit
+              </button>
+            </a>
+          </form>
         </div>
       </div>
     );

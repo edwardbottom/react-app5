@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import 'react-bootstrap-table/css/react-bootstrap-table.css'
+import {modalButton, infoModal} from './forms.js';
+
+
+
+//random data
+let modalB = new Object();
+modalB.target = "#modalBLink";
+modalB.text = "Submit";
+
+let infoB = new Object();
+infoB.id = "modalBLink";
+infoB.description = "Do you want to submit the selected tasks?";
+
 
 //data structure to store data
 const products = [];
@@ -22,26 +35,29 @@ function addProducts(quantity) {
 addProducts(3);
 
 
+
+//global variable to track the number of rows selected using 
+//event handlers
 var totalSelected = 0;
 
+//handler if a single row is selected in a table
 function onRowSelect(row, isSelected, e, rowIndex) {
-  console.log(row)
-  console.log(isSelected)
-  console.log(e)
-  console.log(rowIndex)
   if(isSelected){
     ++totalSelected;
+    if(totalSelected == 2){
+      alert("You have more than one item selected, please confirm that you want to submit all of these items before submitting them ");
+    }
   }
   else{
     --totalSelected;
   }
 }
 
+//handler if all the rows are selected in the table
 function onSelectAll(isSelected, rows) {
-  console.log(isSelected)
-  console.log(rows)
   if(isSelected){
     totalSelected += rows.length;
+    alert("You have more than one item selected, please confirm that you want to submit all of these items before submitting them ");
   }
   else{
     totalSelected -= rows.length;
@@ -67,7 +83,7 @@ export default class SelectBgColorTable extends React.Component {
     this.state = {
       selected:0
     };
-    alert(totalSelected)
+    // alert(totalSelected)
   };
 
   // //state life cycle
@@ -81,11 +97,17 @@ export default class SelectBgColorTable extends React.Component {
 
   render() {
     return (
-      <BootstrapTable data={ products } selectRow={ selectRowProp }>
+      <div>
+        <BootstrapTable data={ products } selectRow={ selectRowProp }>
           <TableHeaderColumn dataField='id' hidden = {true} isKey></TableHeaderColumn>
           <TableHeaderColumn dataField='Task'>Description</TableHeaderColumn>
           <TableHeaderColumn dataField='Description'>Request</TableHeaderColumn>
-      </BootstrapTable>
+        </BootstrapTable>
+        <center>
+          {modalButton(modalB)}
+        </center>
+        {infoModal(infoB)}
+      </div>
     );
   }
 }
