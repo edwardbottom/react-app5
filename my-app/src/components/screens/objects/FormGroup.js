@@ -79,9 +79,10 @@ export function textGroups(props){
 //helper function that creates a option for single and multiple select forms
 //add a name property to this function
 function selectOption(props){
-	return(
-        <option value="select" name={props.name}>{props.label}</option>
-    )
+  //if(props.hasOwnProperty(props.selected)){
+    return(
+      <option value={props.label} name={props.name}>{props.label}</option>
+      )
 }
 
 //creates a drop down menue to select one option 
@@ -104,7 +105,7 @@ export function multipleSelect(props){
 	return(
 		<FormGroup controlId="formControlsSelectMultiple">
 			<p><strong>{props.label}</strong></p>
-      		<FormControl componentClass="select" multiple>
+      		<FormControl componentClass="select" multiple name="search">
         		{props.inputArray.map((inputObj, index) =>
         			selectOption(inputObj)
       			)}

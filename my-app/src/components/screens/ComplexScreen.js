@@ -88,7 +88,8 @@ mObject.label = "Search Results";
 var iArray = [];
 var o12 = new Object();
 o12.label = "A user from the database via the search";
-o12.name = "multiselect[]";
+o12.name = "multiselect";
+o12.selected = true;
 iArray.push(o12);
 iArray.push(o12);
 iArray.push(o12);
@@ -103,12 +104,6 @@ check.align = "center";
 check.id = "stageChangesButton";
 check.text= "Stage Changes";
 objArray.push(check);
-
-var sButton = new Object();
-sButton.type = "confirmButtons";
-sButton.route = "/accessrequest"
-sButton.formId = "#" + "objectData";
-// objArray.push(sButton);
 
 
 //creates text from an object passed in
@@ -528,6 +523,18 @@ export default class ComplexScreen extends React.Component {
     var form = document.querySelector('#objectData');
     var obj = serialize(form, { hash: true });
     console.log(obj);
+
+    //consider changing to flux architecture
+    let options = document.getElementById("formControlsSelectMultiple").options;
+    console.log(options)
+    let vals = [];
+    for(let i = 0; i < options.length; i++){
+      vals.push(options[i].innerText);
+    }
+    // console.log(vals);
+    // console.log(JSON.stringify(vals));
+    obj.selected = JSON.stringify(vals);
+    console.log(obj)
   }  
 
   render() {
