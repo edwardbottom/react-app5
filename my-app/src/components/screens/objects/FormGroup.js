@@ -133,14 +133,14 @@ export function textArea(props){
 function radioOption(props){
   if(props.hasOwnProperty("inline")){
     return(
-      <Radio name={props.label} inline>
+      <Radio name={props.name} inline value={props.label}>
           {props.label}
         </Radio>
     )
   }
   else{
     return(
-      <Radio name={props.label}>
+      <Radio name={props.name} value={props.label}>
           {props.label}
         </Radio>
     )
@@ -152,7 +152,7 @@ export function radioForm(props){
 	return(
     <div>
 			<FormGroup>
-		 		{props.inputArray.map((inputObj, index) =>
+		 		 {props.inputArray.map((inputObj, index) =>
         		radioOption(inputObj)
       	 )}
     	</FormGroup>

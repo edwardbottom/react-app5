@@ -81,9 +81,6 @@ formObj.inputArray = inputArray;
 //   }     
 // }
 
-// function foo(props){
-//   alert("the handler was reached");
-// }
  function getProxy(event){
    axios.get("http://localhost:3004/navBarObj")
       .then(res => {

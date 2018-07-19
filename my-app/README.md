@@ -79,3 +79,56 @@ The intial setup and placement of the code is the same as the GET request, but t
 The post request then needs to have headers with a content type that matches the post request of the server. In the case shown above, this is done as 'plain/text; charset=UTF-8', specifying that the request is sending a string of plain text using the charset UTF-8. Without this header, the call will fail. 
 
 The additional header underneath the content type is an optional header for security purposes. It functions as an access token for the client that is sent to the server to validate the client's request. The .then and .catch for the promise object from the POST request function the same as the requests from the GET request. 
+
+
+##code to generate a basic screen
+The code below takes in an array of JSON objects that could be accessed from a server and 
+uses them to render pages that contain mostly panels and text. The rendering is based off the ordering of the objects in the array; the objects at the begining of the array are rendered first. It operates around a series of conditionals and can be easily modified to render additional objects by adding additional else if cases. 
+
+
+//creates a screen using an array of component objects
+ function createScreen(props){
+   if(props.length > 0){
+         return(
+           <div>
+             {props.map(inputObj => {
+               if(inputObj.type === "header"){
+                   return (
+                     <div>
+                       {header(inputObj)}
+                       <br/>
+                     </div>
+                 )
+                 }
+                 else if(inputObj.type == "headerAndDescription"){
+                   return (
+                     <div>
+                       {headerAndDescription(inputObj)}
+                     </div>
+                   ) 
+                 }
+                 else if(inputObj.type == "linksPanel"){
+                   return(
+                     <div>
+                       {linksPanel(inputObj)}
+                     </div>
+                   )
+                 }
+                 else if(inputObj.type =="createPanels"){
+                   return(
+                     <div>
+                       {createPanels(inputObj.list)}
+                     </div>
+                   )
+                 }
+               return null
+             })}
+          </div>
+         )
+       }
+   else{
+     return (
+       <p> Not a valid props </p>
+     )
+   }     
+ }

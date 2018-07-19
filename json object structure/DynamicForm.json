@@ -1,0 +1,94 @@
+[
+	{
+		"type":"header",
+		"header":"New Application Access Request Form"
+	},
+	{
+		"type":"text",
+		"align":"center",
+		"text":"Search Type:"
+	},
+	{
+		"type":"radioForm",
+		"inputArray":[
+			{
+			"label":"Human Request"
+			},
+			{
+			"label":"Non-Human Request"
+			}
+		]
+	},
+	{
+		"align":"right",
+		"type":"textGroups",
+		"inputArray":[
+			{
+				"id":"last_name",
+				"label":"Last Name",
+				"type":"text",
+				"placeholder":"Last Name",
+				"size":"large"
+			},
+			{
+				"id":"first_name",
+				"label":"First Name",
+				"type":"text",
+				"placeholder":"First Name",
+				"size":"small"
+			},
+			{
+				"id":"sap_id",
+				"label":"SAP ID",
+				"type":"text",
+				"placeholder":"SAP ID",
+				"size":"small"
+			},
+			{
+				"id":"adid",
+				"label":"ADID",
+				"type":"text",
+				"placeholder":"Use a comma for multiple ADID",
+				"size":"medium"
+			}
+		],
+		"inline":true
+	},
+	{
+		"id":"searchComplex",
+		"text":"Search",
+		"type":"button",
+		"class":"btn btn-success",
+		"align":"textAlign:'right'"
+	},
+	{
+		"type":"multipleSelects",
+		"inline":true,
+		"label":"Search Results",
+		"inputArray":[
+			{
+				"label":"A user from the database via the search",
+				"name":"multiselect"
+			},
+			{
+				"label":"A user from the database via the search",
+				"name":"multiselect"
+			},
+			{
+				"label":"A user from the database via the search",
+				"name":"multiselect"
+			},
+			{
+				"label":"A user from the database via the search",
+				"name":"multiselect"
+			}
+		]
+	},
+	{
+		"type":"button",
+		"class":"btn btn-success",
+		"align":"center",
+		"id":"stageChangesButton",
+		"text":"Stage Changes"
+	}
+]
