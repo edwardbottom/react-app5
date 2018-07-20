@@ -52,26 +52,24 @@ export function textGroup(props){
 export function textGroups(props){
   if(props.hasOwnProperty("inline")){
     return(
-      <div>
+      <form id={props.id}>
           <div className="form-group row">
             {props.inputArray.map((inputObj, index) =>
               textGroup(inputObj)
             )}
           </div>
-      </div>
+      </form>
     )
   }
   else{
     return(
-      <div>
-        <Form>
-          <div className="form-group">
-            {props.inputArray.map((inputObj, index) =>
-              textGroup(inputObj)
-            )}
-          </div>
-        </Form>
-      </div>
+      <form id={props.id}>
+        <div className="form-group">
+          {props.inputArray.map((inputObj, index) =>
+            textGroup(inputObj)
+          )}
+        </div>
+      </form>
     )
   }
 }
@@ -88,15 +86,17 @@ function selectOption(props){
 //creates a drop down menue to select one option 
 export function singleSelect(props){
 	return(
-		<FormGroup controlId="formControlsSelect">
-      <ControlLabel>{props.label}</ControlLabel>
-      <FormControl componentClass="select" placeholder="select">
-        {props.inputArray.map((inputObj, index) =>
-        	selectOption(inputObj)
-      	)}
-      	<option value="other">...</option>
-      </FormControl>
-    </FormGroup>
+    <form id={props.id}>
+		  <FormGroup controlId="formControlsSelect">
+        <ControlLabel>{props.label}</ControlLabel>
+        <FormControl componentClass="select" placeholder="select">
+          {props.inputArray.map((inputObj, index) =>
+        	 selectOption(inputObj)
+      	 )}
+      	 <option value="other">...</option>
+        </FormControl>
+      </FormGroup>
+    </form>
 	)
 }
 
@@ -104,16 +104,16 @@ export function singleSelect(props){
 export function multipleSelect(props){
 	return(
 		<FormGroup controlId="formControlsSelectMultiple">
-			<p><strong>{props.label}</strong></p>
-      		<FormControl componentClass="select" multiple name="search">
-        		{props.inputArray.map((inputObj, index) =>
+			 <p><strong>{props.label}</strong></p>
+      	<FormControl componentClass="select" multiple name="search">
+        	{props.inputArray.map((inputObj, index) =>
         			selectOption(inputObj)
-      			)}
-        		<option value="other">...</option>
-      		</FormControl>
-      		<div class="divider"/>
-      		<div class="divider"/>
-    	</FormGroup>
+      		)}
+        	<option value="other">...</option>
+      	</FormControl>
+      <div class="divider"/>
+      <div class="divider"/>
+    </FormGroup>
 	)
 }
 
@@ -121,10 +121,12 @@ export function multipleSelect(props){
 //add a name property
 export function textArea(props){
 	return(
-		<FormGroup controlId="formControlsTextarea">
+    <form id={props.id}>
+		  <FormGroup controlId="formControlsTextarea">
       		<ControlLabel>{props.label}</ControlLabel>
       		<FormControl componentClass="textarea" placeholder="textarea" />
     	</FormGroup>
+    </form>
 	)
 }
 
@@ -150,14 +152,14 @@ function radioOption(props){
 //uses an array of radioOption objects to create a radio form
 export function radioForm(props){
 	return(
-    <div>
+    <form id={props.id}>
 			<FormGroup>
 		 		 {props.inputArray.map((inputObj, index) =>
         		radioOption(inputObj)
       	 )}
     	</FormGroup>
     	<br/>
-    </div>
+    </form>
 	)
 }
 

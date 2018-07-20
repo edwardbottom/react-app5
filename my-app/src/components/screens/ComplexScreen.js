@@ -413,7 +413,7 @@ export default class ComplexScreen extends React.Component {
     super(props);
     this.state = {
       content:null,
-      ids:[]
+      ids:null
     };
   };
 
@@ -424,22 +424,29 @@ export default class ComplexScreen extends React.Component {
         const content = res.data;
         this.setState({ content });
         console.log(this.state.content);
+
+        let ids = [];
         for(let i = 0; i < content.length; i++){
           if(content[i].hasOwnProperty("id")){
-            this.state.ids.push(content[i].id);
-            console.log(content[i].id)
+            ids.push(content[i].id);
           }
         }
-        console.log(this.state.ids)
+        this.setState({ ids });
       })
   }
 
   //creates a json object using the existing dynamic form
   submitForm(){
     var serialize = require('form-serialize');
-    var form = document.querySelector('#objectData');
-    var obj = serialize(form, { hash: true });
-    console.log(obj);
+    var resposnes = [];
+
+    for(let i = 0; i < this.state.ids.length; i++){
+      let id = "#" + this.state.ids[i];
+      let form = document.querySelector(id);
+      let obj = serialize(form, {hash: true});
+      resposnes.push(obj);
+    }
+    console.log(resposnes);
 
     //only run for when multiselect exists
     //consider changing to flux architecture
@@ -449,10 +456,10 @@ export default class ComplexScreen extends React.Component {
     for(let i = 0; i < options.length; i++){
       vals.push(options[i].innerText);
     }
-    // console.log(vals);
-    // console.log(JSON.stringify(vals));
-    obj.selected = JSON.stringify(vals);
-    console.log(obj)
+    console.log(vals);
+    //console.log(JSON.stringify(vals));
+    //obj.selected = JSON.stringify(vals);
+    //console.log(obj)
   }  
 
   render() {
@@ -466,7 +473,7 @@ export default class ComplexScreen extends React.Component {
                 <div className="col-xs-5 col-xs-offset-9">
                   {/*<a href={props.route}>*/}
                     <button className="btn btn-success" 
-                      onClick= {this.submitForm}>Submit
+                      onClick= {this.submitForm.bind(this)}>Submit
                     </button>
                   {/*</a>*/}
                 </div><br/><br/>
