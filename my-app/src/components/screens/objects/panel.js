@@ -247,5 +247,55 @@ export function createCenterPanels(list){
 	);
 }
 
+//helper function to create the contents for the body of the panelception function
+function panelContents(props){
+  return(
+    <div>
+      {props.map((pan, index) =>{
+        if(pan.type == "panelception"){
+          return(
+            <div>
+              {panelception(pan)}
+              <br/>
+            </div>
+          )
+        }
+        else{
+          return(
+            <div>
+              {panel(pan)}
+              <br/>
+            </div>
+          )
+        }
+      })
+    }
+  </div>
+  )
+}
+
+//creates a panel that expands to contain multiple panels
+//todo: document
+export function panelception(props){
+  return(
+    <div>
+      <div class="panel-group">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href={props.expandID}>{props.header}</a>
+            </h4>
+          </div>
+          <div id={props.bodyID} class="panel-collapse collapse">
+            <div class="panel-body">
+              {panelContents(props.content)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 

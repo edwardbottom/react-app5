@@ -10,7 +10,7 @@ import {createNavBar} from './objects/navbar';
 import {input, modalLink, basicModal, modalButton} from './objects/forms';
 import {request, get} from './services/requests';
 import axios from 'axios';
-
+import {createScreen} from './CreateScreen';
 
 //random data
 let one = new Object();
@@ -26,37 +26,10 @@ onee.header = "Change User Password (non modal)";
 //onee.target = "#change-password-modal";
 onee.inputArray = [];
 onee.body = "Changes a Users Password When Clicked";
-let two= new Object();
-two.route = "link20";
-two.header = "Unix Access"
-//two.body = "Request UNIX Access. If you need help requestion access, please, click here"
-let three= new Object();
-three.route = "link21";
-three.header = "Bulk Password Reset Request";
-//three.body = "Request user password reset for organizations with extended user count";
-let four= new Object();
-four.route = "link22";
-four.header = "AAUR (Access Another User(s) Resources";
-four.body = "For Business Continuity. To gain access to Email, information on hard drive, or share folders/home drives of Terminated or Users on Disability. If you need help requesting access, please click here. For obtaining information on Active employees please consult with your HR Business Partner (HRBP)";
-let five= new Object();
-five.route = "link23";
-five.header = "Application Access V2";
-five.body = "Request access to Applications within the following environments: Regular, Intelligent Desktop (ID) and CTLAccess SSO. If you need help requesting access, please click here";
-let six= new Object();
-six.route = "link24";
-six.header = "Application Global Group(s) & CITRIX ICON";
-six.body = "Request access to CITRIX ICON and Application Global Group(s). CITRIX access publishes the CITRIX ICON that is used in CTL CITRIX for user(s). Application Global Group(s) access provides rights and permissions to a group of user(s) needing access to a specific Application(s). If you need help requesting access, please click here";
 
 
 let list = [];
 list.push(one);
-// list.push(onee);
-list.push(two);
-list.push(three);
-list.push(four);
-list.push(five);
-list.push(six);
-
 
 let textObj = new Object();
 textObj.header = "User Tools";
@@ -64,67 +37,6 @@ textObj.description = "null";
 
 let headerObj = new Object();
 headerObj.header = "Work Flows";
-
-let navBarObj = new Object();
-navBarObj.titlePath = "/home";
-let navItems = [];
-let navone = new Object();
-navone.id = "my_tasks_listener"
-navone.path= "/home"
-navone.action= "loadMyTasks();"
-navone.description= "My Tasks";
-
-let navtwo = new Object();
-navtwo.id = "access_request_listener";
-navtwo.path= "/accessrequest";
-navtwo.description="Access Request";
-
-let navthree = new Object();
-navthree.id = "budget_request_listener";
-navthree.path= "/budgetrequests";
-navthree.description="Budget Request";
-
-let navfour = new Object();
-navfour.id = "contractor_management_listener";
-navfour.path= "/contractormanagement";
-navfour.description="Contractor Management";
-
-let navfive = new Object();
-navfive.id = "real_estate_listener";
-navfive.path= "/realestate";
-navfive.description="Real Estate"
-
-let navseven = new Object();
-navseven.id = "user_tools_listener";
-navseven.path= "/usertools";
-navseven.description="User Tools"
-
-let naveight = new Object();
-naveight.id = "voice_and_data_services_listener"
-naveight.path= "/voiceanddataservices"
-naveight.description="Voice and Data Services"
-
-let navnine = new Object();
-navnine.id= "logout"
-navnine.path= "/"
-navnine.description="Logout"
-
-navItems.push(navone);
-navItems.push(navtwo);
-navItems.push(navthree);
-navItems.push(navfour);
-navItems.push(navfive);
-navItems.push(navseven);
-navItems.push(naveight);
-navItems.push(navnine);
-
-navBarObj.list = navItems;
-
-let searchBar = new Object();
-searchBar.router = "phpIsTheWorst";
-searchBar.placeholder = "Search WSS System";
-
-navBarObj.searchbar = searchBar;
 
 let changePasswordModal = new Object();
 changePasswordModal.header = "Change User Password";
@@ -177,18 +89,104 @@ let workFlowModalButton = new Object();
 workFlowModalButton.target = "#add-to-workflow-modal";
 workFlowModalButton.text = "Add to Work Flow"
 
-let requestObj = new Object();
-requestObj.requestType = "GET";
-requestObj.url = "http://localhost:3004/profile";
-
-let requestObj2 = new Object();
-requestObj2.requestType = "GET";
-requestObj2.url = "http://localhost:3004/comments"
-
 let seperatePagePanel = new Object();
 seperatePagePanel.header = "Change User Password (other page)";
 seperatePagePanel.route = "/ChangePassword";
 
+
+
+
+
+let newScreen = [];
+let ManagerToolsHeader = new Object();
+ManagerToolsHeader.type = "header";
+ManagerToolsHeader.header = "Manager Tools";
+newScreen.push(ManagerToolsHeader);
+let managerToolsListObj = new Object;
+managerToolsListObj.type = "createPanels";
+let tList = [];
+let AA = new Object();
+AA.route = "AAUR";
+AA.header = "AAUR (Access Another User(s) Resources) ";
+AA.body = "AAUR (Access Another User(s) Resources) ";
+tList.push(AA);
+let del = new Object();
+del.route = "Delegation";
+del.header = "Delegation";
+del.body = "Delegation";
+tList.push(del);
+let asd = new Object();
+asd.route = "Re-enableUser";
+asd.header = "Re-enable User (PCI)";
+asd.body = "Re-enable User (PCI)";
+tList.push(asd);
+let asdf = new Object();
+asdf.route = "DisplayMyPeople";
+asdf.header = "Display My People";
+asdf.body = "Display My People";
+tList.push(asdf);
+let asdfg = new Object();
+asdfg.route = "DomainPasswordReset";
+asdfg.header = "Domain Password Reset";
+asdfg.body = "Domain Password Reset";
+tList.push(asdfg);
+managerToolsListObj.list = tList;
+newScreen.push(managerToolsListObj);
+
+let UserToolsHeader = new Object();
+UserToolsHeader.type = "header";
+UserToolsHeader.header = "Users Tools";
+newScreen.push(UserToolsHeader);
+let userToolsListObj = new Object;
+userToolsListObj.type = "createPanels";
+let uList = [];
+let q = new Object();
+q.route = "ConferencingRequest";
+q.header = "Conferencing Request ***";
+q.body = "Conferencing Request ***";
+uList.push(q);
+let d = new Object();
+d.route = "DirectoryPhotoOpt-InOut";
+d.header = "Directory Photo Opt-In/Out";
+d.body = "Directory Photo Opt-In/Out";
+uList.push(d);
+let zxc = new Object();
+zxc.route = "MobileIDCreation";
+zxc.header = "Mobile ID Creation";
+zxc.body = "Mobile ID Creation";
+uList.push(zxc);
+let v = new Object();
+v.route = "MobileIDPasswordCreation";
+v.header = "Mobile ID Password Creation";
+v.body = "Mobile ID Password Creation";
+uList.push(v);
+let g = new Object();
+g.route = "RACFPasswordReset";
+g.header = "RACF Password Reset";
+g.body = "RACF Password Reset";
+uList.push(g);
+let y = new Object();
+y.route = "UnixPasswordReset";
+y.header = "Unix Password Reset";
+y.body = "Unix Password Reset";
+uList.push(y);
+let e = new Object();
+e.route = "DomainPasswordReset";
+e.header = "Domain Password Reset";
+e.body = "Domain Password Reset";
+uList.push(e);
+let eb = new Object();
+eb.route = "Zip Code Update Form";
+eb.header = "Zip Code Update Form";
+eb.body = "Zip Code Update Form";
+uList.push(eb);
+let eaq = new Object();
+eaq.route = "SavisDomain";
+eaq.header = "Savis Domain ---***";
+eaq.body = "Savis Domain ---***";
+uList.push(eaq);
+userToolsListObj.list = uList;
+newScreen.push(userToolsListObj);
 
 //class to render the usertools screen
 export default class UserToolsScreen extends React.Component {
@@ -198,7 +196,7 @@ export default class UserToolsScreen extends React.Component {
     this.state = {navData:this.props.navData,
       content:null,
     };
-    this.state.navData.list[5].active = "true";
+    this.state.navData.list[2].active = "true";
   };
 
   //state life cycle
@@ -211,14 +209,7 @@ export default class UserToolsScreen extends React.Component {
   }
 
   render() {
-    //function to make a get request for an object
-    function getHandler(){
-      {request(requestObj)}
-    }
-    //function to make the get request for an array
-    function getHandlerArr(){
-      {request(requestObj2)}
-    }
+
     return (
       <div>
           {createNavBar(this.state.navData)}
@@ -230,11 +221,10 @@ export default class UserToolsScreen extends React.Component {
             <br/>
             {panel(seperatePagePanel)}
             {collapsePanel(onee)}
-            {createPanels(list)}
             {basicModal(changePasswordModal)}
             {basicModal(addToWorkFlowModal)}
-            <button onClick={getHandler}>Request</button>
-            <button onClick={getHandlerArr}>Request Array</button>
+            {createPanels(list)}
+            {createScreen(newScreen)}
           </div>
       </div>
     );

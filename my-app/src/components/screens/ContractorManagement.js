@@ -8,69 +8,8 @@ import {rightSearchBar} from './objects/SearchBar';
 import {table} from './objects/table';
 import {createNavBar} from './objects/navbar';
 
+
 //random data
-let navBarObj = new Object();
-navBarObj.titlePath = "/home";
-let navItems = [];
-let navone = new Object();
-navone.id = "my_tasks_listener"
-navone.path= "/home"
-navone.action= "loadMyTasks();"
-navone.description= "My Tasks";
-
-let navtwo = new Object();
-navtwo.id = "access_request_listener";
-navtwo.path= "/accessrequest";
-navtwo.description="Access Request";
-
-let navthree = new Object();
-navthree.id = "budget_request_listener";
-navthree.path= "/budgetrequests";
-navthree.description="Budget Request";
-
-let navfour = new Object();
-navfour.id = "contractor_management_listener";
-navfour.path= "/contractormanagement";
-navfour.description="Contractor Management";
-
-let navfive = new Object();
-navfive.id = "real_estate_listener";
-navfive.path= "/realestate";
-navfive.description="Real Estate"
-
-let navseven = new Object();
-navseven.id = "user_tools_listener";
-navseven.path= "/usertools";
-navseven.description="User Tools"
-
-let naveight = new Object();
-naveight.id = "voice_and_data_services_listener"
-naveight.path= "/voiceanddataservices"
-naveight.description="Voice and Data Services"
-
-let navnine = new Object();
-navnine.id= "logout"
-navnine.path= "/"
-navnine.description="Logout"
-
-navItems.push(navone);
-navItems.push(navtwo);
-navItems.push(navthree);
-navItems.push(navfour);
-navItems.push(navfive);
-navItems.push(navseven);
-navItems.push(naveight);
-navItems.push(navnine);
-
-navBarObj.list = navItems;
-
-let searchBar = new Object();
-searchBar.router = "phpIsTheWorst";
-searchBar.placeholder = "Search WSS System";
-
-
-navBarObj.searchbar = searchBar;
-
 let linksHead = new Object();
 linksHead.header = "Important Links";
 
@@ -89,39 +28,35 @@ linksPanelO.linkList.push(linkObj);
 let headerObj = new Object();
 headerObj.header = "Work Flow";
 
-let findContractors = new Object();
-findContractors.header = "Find Contractors";
+//random data
+let one = new Object();
+one.route = "DomainAccount";
+one.header = "Domain Account";
+one.body = "Request Cloud SUDO Access";
+let two= new Object();
+two.route = "EmailAccount";
+two.header = "Email Account"
+two.body = "Request UNIX Access. If you need help requestion access, please, click here"
+let three= new Object();
+three.route = "SponsorException";
+three.header = "Sponsor Exception (Role base)";
+three.body = "Request user password reset for organizations with extended user count";
+let four= new Object();
+four.route = "ECMS";
+four.header = "ECMS - (Going away)";
+four.body = "For Business Continuity. To gain access to Email, information on hard drive, or share folders/home drives of Terminated or Users on Disability. If you need help requesting access, please click here. For obtaining information on Active employees please consult with your HR Business Partner (HRBP)";
+let five= new Object();
+five.route = "VPN";
+five.header = "VPN - ( Email Dave)";
+five.body = "Request access to Applications within the following environments: Regular, Intelligent Desktop (ID) and CTLAccess SSO. If you need help requesting access, please click here";
 
-let provisionContractors = new Object();
-provisionContractors.header = "Provision Contractors";
-provisionContractors.body = [];
-let rowObj = new Object();
-rowObj.task = "This is a task";
-rowObj.description = "that will come from the database";
-provisionContractors.body.push(rowObj);
-provisionContractors.body.push(rowObj);
-provisionContractors.body.push(rowObj);
 
-let manageContractors = new Object();
-manageContractors.header = "Manage Contractors";
-manageContractors.body = [];
-manageContractors.body.push(rowObj);
-manageContractors.body.push(rowObj);
-manageContractors.body.push(rowObj);
-
-let tablePanel = new Object();
-tablePanel.header = "Manage Contractors";
-tablePanel.route = "/route";
-tablePanel.tableContents = [];
-let rowObject = Object();
-rowObject.task = "A task";
-rowObject.description = "and a description";
-tablePanel.tableContents.push(rowObject);
-tablePanel.tableContents.push(rowObject);
-tablePanel.tableContents.push(rowObject);
-tablePanel.tableContents.push(rowObject);
-tablePanel.tableContents.push(rowObject);
-tablePanel.tableContents.push(rowObject);
+let list = [];
+list.push(one);
+list.push(two);
+list.push(three);
+list.push(four);
+list.push(five);
 
 //renders the contractor management screen
 export default class ContractorManagementScreen extends React.Component {
@@ -153,13 +88,11 @@ export default class ContractorManagementScreen extends React.Component {
                 {header(linksHead)}
                 {linksPanel(linksPanelO)}
                 {header(headerObj)}
-                {centerPanelWithRows(provisionContractors)}
-                {centerPanelWithRows(manageContractors)}
-                {centerPanelWithTable(tablePanel)}
-              </div>
+                {createPanels(list)}
             </div>
           </div>
       </div>
+    </div>
     );
   }
 }

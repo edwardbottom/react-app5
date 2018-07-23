@@ -271,32 +271,17 @@
       {
         "id": "access_request_listener",
         "path": "/accessrequest",
-        "description": "Access Request"
+        "description": "Access"
       },
       {
-        "id": "budget_request_listener",
-        "path": "/budgetrequests",
-        "description": "Budget Request"
+        "id": "user_tools_listener",
+        "path": "/usertools",
+        "description": "Tools"
       },
       {
         "id": "contractor_management_listener",
         "path": "/contractormanagement",
         "description": "Contractor Management"
-      },
-      {
-        "id": "real_estate_listener",
-        "path": "/realestate",
-        "description": "Real Estate"
-      },
-      {
-        "id": "user_tools_listener",
-        "path": "/usertools",
-        "description": "User Tools"
-      },
-      {
-        "id": "voice_and_data_services_listener",
-        "path": "/voiceanddataservices",
-        "description": "Voice and Data Services"
       },
       {
         "id": "logout_screen",
