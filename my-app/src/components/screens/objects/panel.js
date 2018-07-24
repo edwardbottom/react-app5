@@ -275,7 +275,6 @@ function panelContents(props){
 }
 
 //creates a panel that expands to contain multiple panels
-//todo: document
 export function panelception(props){
   return(
     <div>

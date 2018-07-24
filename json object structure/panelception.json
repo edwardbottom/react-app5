@@ -1,0 +1,62 @@
+{
+	"type":"panelception",
+	"bodyID":"expandPanels",
+	"expandID":"#expandPanels",
+	"header":"Custom Application Access",
+	"content":[
+		{
+			"route":"BSAR",
+			"header":"Billing System Access - BSAR",
+			"body":"Billing System Access - BSAR"
+		},
+		{
+			"route":"SAP",
+			"header":"SAP System Access",
+			"body":"Billing System Access - BSAR"
+		},
+		{
+			"route":"SAV",
+			"header":"Savvis App Access"
+		},
+		{
+			"type":"panelception",
+			"bodyID":"expandPanelsa",
+			"expandID":"#expandPanelsa",
+			"header":"Sales Force Access",
+			"content":[
+				{
+					"route":"UWS",
+					"header":"UWS/EOC Access",
+					"body":"UWS/EOC Access"
+				}
+			]
+		},
+		{
+			"route":"TouchMobile",
+			"header":"TouchMobile TMPAM",
+			"body":"TouchMobile TMPAM"
+		},
+		{
+			"route":"BrixAccess",
+			"header":"Brix Access  - **","body":"Brix Access  - **"
+		},
+		{
+			"route":"CAPM",
+			"header":"CAPM Role Provision - **",
+			"body":"CAPM Role Provision - **"
+		},
+		{
+			"route":"FT3",
+			"header":"FT3 access, revoke (Fiber-to-the-Tower) FTTT",
+			"body":"FT3 access, revoke (Fiber-to-the-Tower) FTTT"
+		},
+		{
+			"route":"KGP",
+			"header":"KGP Access"
+		},
+		{
+			"route":"NFMS",
+			"header":"NFMS/UNET -  ** "
+		}
+	]
+}

@@ -1,58 +1,77 @@
 //imports react libraries and class imports
 import React, { Component } from 'react';
+import LoginForm from './objects/LoginForm';
+import {panel, createPanels, centerPanel, collapsePanel} from './objects/panel';
+
+let newsArray = [];
+let obj = new Object();
+let text = "News about CenturyLink";
+newsArray.push(text);
+newsArray.push(text);
+newsArray.push(text);
+newsArray.push(text);
+
+function newsItem(props){
+  //alert(props.text);
+  return(
+    <li> <h3>{props}</h3> </li>
+  )
+}
+function createNews(props){
+   return(
+    <div>
+      {props.map((pan, index) =>{
+        {newsItem(pan)}
+      })
+    }
+  </div>
+  )
+}
+
+function newsList(props) {
+  const listItems = props.map((text) =>
+    <li>
+      <h3>{text}</h3>
+    </li>
+  );
+  return (
+    <ul>{listItems}</ul>
+  );
+}
 
 //renders a static login screen
 export default class LoginScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    //make a request for the announcements and set a state for 
+    //announcements to render around
+  }
+
   render() {
     return (
       <div>
-        {/*css to center the panel for the login form*/}
-        <style>{"\
-        .container{\
-          display: flex;\
-          justify-content: center;\
-          align-items: center;\
-        }\
-      "}
-      <br/>
-      <br/>
-      </style>
-      {/* login image logo*/}
-      <center>
-          <img src="logo.png" alt="CenturyLink Logo"></img>
-      </center>
-      <br/>
-      <br/>
-      <div className="container">
-      {/*login form and panel*/}
-      <div class="col-lg-3 col-lg-3">
-        <div class="large-box">
-          <div className="panel panel-success">
-            <div className="panel-heading"><center><strong>Login</strong></center></div>
-              <div className="panel-body">
-                <center>
-                  <form action="/I_hate_php.php">
-                    <div className="form-group">
-                      <label for="username">Username:</label>
-                      <input type="username" class="form-control" id="username" placeholder="CenturyLink Common User ID"></input>
-                    </div>
-                    <div className="form-group">
-                      <label for="pwd">Password:</label>
-                      <input type="password" className="form-control" id="pwd" placeholder="CUID password"></input>
-                    </div>
-                    <div className="checkbox">
-                      <label><input type="checkbox"></input> Remember me</label>
-                    </div>
-                    <a href="/home" className="btn btn-success" role="button">Login</a><br/><br/>
-                    <a href="http://somelink.com">Send Email</a>
-                  </form>
-                </center>
-              </div>
-            </div>
+        <div className="col-md-8">
+          <img src="logo.png" alt="CenturyLink Logo" height="120" width="350"></img>
+          <strong>
+            <h1> WSS Announcements </h1>
+          </strong>
+          <p></p>
+          <div className="col-md-9 well">
+            {newsList(newsArray)}
           </div>
         </div>
+        <div className="col-md-4">
+          <br/>
+          <br/>
+          <center>
+            <LoginForm/>
+          </center>
+        </div>
       </div>
-    </div>
     );
   }
 }

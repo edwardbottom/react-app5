@@ -110,6 +110,8 @@ agg.body = "Application Global Group(s) & CITRIX ICON";
 cit.content.push(agg);
 //pc.content.push(cit);
 
+console.log(JSON.stringify(po));
+
 let sa = new Object();
 sa.type = "panelception";
 sa.bodyID = "expandPanelsazq";
