@@ -11,23 +11,7 @@ newsArray.push(text);
 newsArray.push(text);
 newsArray.push(text);
 
-function newsItem(props){
-  //alert(props.text);
-  return(
-    <li> <h3>{props}</h3> </li>
-  )
-}
-function createNews(props){
-   return(
-    <div>
-      {props.map((pan, index) =>{
-        {newsItem(pan)}
-      })
-    }
-  </div>
-  )
-}
-
+//the function used to create a list of accouncements
 function newsList(props) {
   const listItems = props.map((text) =>
     <li>
